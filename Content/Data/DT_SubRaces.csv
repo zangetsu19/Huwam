@@ -1,0 +1,5 @@
+Name,SubRaceId,ParentRaceId,DisplayName,Description,ManaWellModifier
+subrace_elf_dark,race.elf.dark,race.elf,Dark-Elf,Mysterious purple-skinned elf outliers with white hair,Deep
+subrace_elf_high,race.elf.high,race.elf,High-Elf,High-status elf lineage tied to knowledge and political refinement,Deep
+subrace_orc_half,race.orc.half,race.orc,Half-Orc,Mixed orc lineage able to bridge fear respect and outsider identity,Average
+subrace_beastfolk_panthera,race.beastfolk.panthera,race.beastfolk,Panthera,Panther-like beastfolk known for stealth senses and grace,Average

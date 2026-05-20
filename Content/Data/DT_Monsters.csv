@@ -1,0 +1,4 @@
+Name,MonsterId,DisplayName,Rank,BaseStrength,BaseDexterity,BaseHealth,BaseMana,BaseDefense,BaseLuck,PrimaryDropItemId,PrimaryDropQuantity,GoldReward,ExperienceReward,bTamable,bEdible,Description
+monster_slime_basic,monster.slime.basic,Basic Slime,F,2,3,2,0,1,2,material.slime_core.basic,1,3,5,true,false,A weak slime common in tall grass fields
+monster_slime_wood,monster.slime.wood,Wood Slime,F,3,4,3,1,2,2,material.slime_gel.basic,2,5,8,true,false,A slime influenced by wood and forest matter
+monster_goblin_basic,monster.goblin.basic,Goblin,E,6,5,5,1,3,4,material.hide.small,1,8,12,false,true,A small hostile humanoid threat for early combat

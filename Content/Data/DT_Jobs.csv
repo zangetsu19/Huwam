@@ -1,0 +1,6 @@
+Name,JobId,DisplayName,Description,MinSalaryGold,MaxSalaryGold,AssociatedGuildId
+job_adventurer,job.adventurer,Adventurer,Takes quests and proves rank through danger,10,60,guild.adventurers
+job_hunter_gatherer,job.hunter_gatherer,Hunter/Gatherer,Collects field resources and harvests animals or monsters,8,45,guild.archers
+job_blacksmith,job.blacksmith,Blacksmith,Smelts metal and crafts weapons armor and tools,20,120,
+job_merchant,job.merchant,Merchant,Buys sells transports and reads the market,15,150,guild.merchants
+job_farmer,job.farmer,Farmer,Grows food herbs and field resources,6,40,

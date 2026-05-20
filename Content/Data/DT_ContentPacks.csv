@@ -1,0 +1,7 @@
+Name,ContentPackId,DisplayName,PackType,PackState,Version,RequiredGameVersion,EntitlementId,bEnabledByDefault,bRequiresOwnership,bCosmeticOnly,Description
+content_pack_starter_core,content.pack.starter_core,Starter Core,System,Active,0.1.0,0.1.0,,true,false,false,Core launch content used by all players
+content_pack_cosmetic_dragonhide_ember,content.pack.cosmetic.dragonhide_ember,Dragonhide Ember Vanity Set,Cosmetic,Staged,1.0.0,0.1.0,store.dragonhide_ember_set,false,true,true,Purchaseable cosmetic armor skin inspired by molten dragonhide gauntlets
+content_pack_pet_cleaner_slime,content.pack.pet.cleaner_slime,Cleaner Slime Pet,Companion,Staged,1.0.0,0.1.0,store.cleaner_slime_pet,false,true,true,Purchaseable non-combat slime pet focused on vanity and light utility flavor
+content_pack_mount_snowstag,content.pack.mount.snowstag,Labyrinth Snowstag Mount,Companion,Staged,1.0.0,0.1.0,store.labyrinth_snowstag_mount,false,true,true,Purchaseable mount inspired by the Snow White Deer-God lineage
+content_pack_gameplay_archers_guild,content.pack.gameplay.archers_guild,Archers Guild Expansion,Gameplay,Draft,0.1.0,0.2.0,expansion.archers_guild,false,true,false,Future gameplay expansion for archery jobs gathering contracts mounts and hunting content
+content_pack_world_dawnspire,content.pack.world.dawnspire,Dawnspire Arc,World,Draft,0.1.0,0.3.0,expansion.dawnspire,false,true,false,Future story expansion for Laucian Dawnspire mage guild and advanced magic systems

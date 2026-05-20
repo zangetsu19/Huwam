@@ -1,0 +1,8 @@
+Name,SpellId,DisplayName,Category,School,Rank,ManaCost,CastTime,Duration,Range,Description
+spell_fire_spark,spell.fire.spark,Spark,Fire,Evocation,F,1,Quick,Instant,Short,Creates a tiny flame or spark
+spell_air_gust,spell.air.gust,Gust,Air,Evocation,F,1,Quick,Instant,Short,Pushes air in a small burst
+spell_water_sprinkle,spell.water.sprinkle,Sprinkle,Water,Conjuration,F,1,Quick,Instant,Short,Creates a small sprinkle of water
+spell_light_tiny_lights,spell.light.tiny_lights,Tiny Lights,Light,Evocation,F,1,Quick,Sustained,Short,Creates small floating lights
+spell_green_minor_heal,spell.green.minor_heal,Minor Heal,Green,Necromancy,F,2,Normal,Instant,Touch,Closes tiny cuts and eases pain
+spell_rune_warm_rune,spell.rune.warm_rune,Warm Rune,Rune,Transmutation,F,1,Normal,Timed,Touch,Keeps a small object or bath warm
+spell_rune_alarm_rune,spell.rune.alarm_rune,Alarm Rune,Rune,Abjuration,F,2,Normal,Timed,Touch,Creates a simple alert when crossed

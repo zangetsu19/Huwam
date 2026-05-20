@@ -1,0 +1,11 @@
+Name,StatId,DisplayName,Description,MinValue,MaxValue
+stat_strength,stat.strength,Strength,Physical power for forging melee labor and carrying,0,999
+stat_charisma,stat.charisma,Charisma,Social force leadership charm and negotiation,0,999
+stat_intelligence,stat.intelligence,Intelligence,Knowledge finework spellcraft and systems thinking,0,999
+stat_wisdom,stat.wisdom,Wisdom,Judgment alchemy safe magic and life sense,0,999
+stat_dexterity,stat.dexterity,Dexterity,Precision crafting archery stealth and agility,0,999
+stat_luck,stat.luck,Luck,Chance loot dice strange events and rare meetings,0,999
+stat_health,stat.health,Health,Body vitality injury resistance and survival,0,999
+stat_mana,stat.mana,Mana,Mana well expression spell casting and sustain,0,999
+stat_defense,stat.defense,Defense,Damage resistance armor use and endurance,0,999
+stat_world_popularity,stat.world_popularity,World Popularity,Server-wide fame infamy and historical attention,0,999

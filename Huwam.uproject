@@ -1,0 +1,13 @@
+{
+    "FileVersion": 3,
+    "EngineAssociation": "5.7.4",
+    "Category": "Game",
+    "Description": "Huwam: The First Adventure Life Unreal project scaffold with custom AI engines.",
+    "Modules": [
+        {
+            "Name": "Huwam",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+# Unreal Engine
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vscode/
+*.opensdf
+*.sdf
+*.log
+*.vs
+*.xcuserstate
+*.xcodeproj
+*.sln

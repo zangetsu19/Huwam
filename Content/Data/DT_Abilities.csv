@@ -1,0 +1,11 @@
+Name,AbilityId,DisplayName,AbilityType,Description,bPermanentAtCreation
+ability_born_leader,ability.born_leader,Born Leader,Passive,Builds Charisma faster with allies,true
+ability_indomitable,ability.indomitable,Indomitable,Passive,Builds Defense through hardship and pressure,true
+ability_quick_hands,ability.quick_hands,Quick Hands,Passive,Improves early crafting gathering and item handling,true
+ability_mana_sense,ability.mana_sense,Mana Sense,Passive,Helps detect mana flow runes and weak magical traces,true
+ability_natural_gatherer,ability.natural_gatherer,Natural Gatherer,Passive,Improves F-rank resource gathering yield,true
+ability_steady_aim,ability.steady_aim,Steady Aim,Passive,Improves bow and thrown weapon handling,true
+ability_stubborn_survivor,ability.stubborn_survivor,Stubborn Survivor,Passive,Improves survival when hunger thirst or danger press in,true
+ability_trade_instinct,ability.trade_instinct,Trade Instinct,Passive,Helps notice price differences and basic market shifts,true
+ability_soft_step,ability.soft_step,Soft Step,Passive,Helps stealth movement and quiet travel,true
+ability_world_touched,ability.world_touched,World Touched,Passive,Slightly improves rare story attention and fate hooks,true

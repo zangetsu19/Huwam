@@ -1,0 +1,11 @@
+Name,SkillId,DisplayName,Category,Description,bPermanentAtCreation
+skill_smithing,skill.smithing,Smithing,Crafting,Smelting forging and repairing metal gear,true
+skill_tanning,skill.tanning,Tanning,Crafting,Turning hides into usable leather,true
+skill_sewing,skill.sewing,Sewing,Crafting,Making cloth armor pouches robes and repairs,true
+skill_woodworking,skill.woodworking,Woodworking,Crafting,Carving wood handles arrows chests and simple tools,true
+skill_bowyer,skill.bowyer,Bowyer,Crafting,Making and repairing bows,true
+skill_fletcher,skill.fletcher,Fletcher,Crafting,Making arrows and quivers,true
+skill_alchemy,skill.alchemy,Alchemy,Crafting,Mixing herbs monster parts oils and potions,true
+skill_basic_weapon_handling,skill.basic_weapon_handling,Basic Weapon Handling,Combat,Using starter weapons safely,true
+skill_gathering,skill.gathering,Gathering,Gathering,Collecting plants wood stone fibers and field goods,true
+skill_runecrafting,skill.runecrafting,Runecrafting,Magic,Drawing and activating magical rune structures,true

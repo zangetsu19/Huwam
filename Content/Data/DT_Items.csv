@@ -1,0 +1,26 @@
+Name,ItemId,DisplayName,ItemType,Description,StackLimit,Weight,BaseValueGold,AttackPower,DefensePower,ManaPower,UtilityPower,PrimaryEquipSlotId
+item_weapon_basic_sword,item.weapon.basic_sword,Basic Sword,Weapon,A starter iron sword with a basic wooden grip,1,4.0,25,5,0,0,0,slot.weapon.main_hand
+item_weapon_basic_knife,item.weapon.basic_knife,Basic Knife,Weapon,A simple knife useful for combat and work,1,1.0,10,2,0,0,1,slot.weapon.main_hand
+item_weapon_basic_bow,item.weapon.basic_bow,Basic Bow,Weapon,A simple wooden bow with flax string,1,2.0,18,4,0,0,0,slot.weapon.ranged
+item_ammo_basic_arrows,item.ammo.basic_arrows,Basic Arrows,Material,Simple arrows made from wood and stone,99,0.1,1,1,0,0,0,slot.ammo
+item_container_basic_quiver,item.container.basic_quiver,Basic Quiver,Container,A hide and fiber quiver for arrows,1,1.0,8,0,0,0,2,slot.quiver
+item_tool_gathering_knife,item.tool.gathering_knife,Gathering Knife,Tool,A small tool for herbs fibers and light harvesting,1,0.5,6,1,0,0,2,slot.tool
+item_tool_hatchet,item.tool.hatchet,Hatchet,Tool,A small axe for basic wood gathering,1,2.0,12,2,0,0,3,slot.tool
+item_tool_pickaxe,item.tool.pickaxe,Pickaxe,Tool,A basic pickaxe for stone and ore,1,4.0,16,2,0,0,3,slot.tool
+item_tool_fishing_rod,item.tool.fishing_rod,Fishing Rod,Tool,A starter rod for small fish,1,1.0,10,0,0,0,3,slot.tool
+item_container_small_pouch,item.container.small_pouch,Small Pouch,Pouch,A small hide pouch for materials or coins,1,0.2,4,0,0,0,1,slot.pouch.1
+item_container_basic_chest,item.container.basic_chest,Basic Chest,Container,A wooden chest for storage,1,8.0,20,0,1,0,4,
+item_bag_adventuring_backpack,item.bag.adventuring_backpack,Adventuring Backpack,Backpack,An upgraded backpack with 8 pouch slots and 500 item slots,1,3.0,120,0,1,0,8,slot.backpack
+item_gear_slime_test_piece,item.gear.slime_test_piece,Slime Gear Test Piece,Armor,A prototype slime-based gear piece for crafting tests,1,1.0,15,0,2,1,1,slot.chest
+material_wood_basic,material.wood.basic,Basic Wood,Material,Common wood from starter trees,99,0.5,1,0,0,0,0,
+material_stone_basic,material.stone.basic,Stone,Material,Common stone from rocky fields,99,0.5,1,0,0,0,0,
+material_flax,material.flax,Flax,Material,Field plant used for thread and bowstring,99,0.1,1,0,0,0,0,
+material_fiber_grass,material.fiber.grass,Grass Fiber,Material,Common fiber used for cloth rope and quivers,99,0.1,1,0,0,0,0,
+material_herb_lavender,material.herb.lavender,Lavender,Material,Common herb used in alchemy,99,0.1,2,0,0,0,0,
+material_herb_mint,material.herb.mint,Mint,Material,Common herb found near fields and rivers,99,0.1,2,0,0,0,0,
+material_herb_rosemary,material.herb.rosemary,Rosemary,Material,Common herb used in cooking and alchemy,99,0.1,2,0,0,0,0,
+material_slime_core_basic,material.slime_core.basic,Basic Slime Core,Material,Core harvested from a basic slime,99,0.2,5,0,0,1,0,
+material_slime_gel_basic,material.slime_gel.basic,Basic Slime Gel,Material,Gel harvested from a basic slime,99,0.2,3,0,0,0,0,
+material_hide_small,material.hide.small,Small Animal Hide,Material,Small hide used for pouches quivers and leatherwork,99,0.4,4,0,0,0,0,
+material_iron_bar,material.iron_bar,Iron Bar,Material,Smelted iron used for starter weapons and tools,99,1.0,8,0,0,0,0,
+material_flax_bowstring,material.flax_bowstring,Flax Bowstring,Material,Prepared flax string used for basic bows,99,0.1,3,0,0,0,0,

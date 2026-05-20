@@ -1,0 +1,9 @@
+Name,NpcId,DisplayName,RaceId,SubRaceId,Age,SimulationTier,GuildId,RoleSummary
+npc_eldoria_gorth_runkis,npc.eldoria.gorth_runkis,Gorth Runkis,race.orc,race.orc.half,48,Critical,guild.adventurers,S-rank legendary barbarian and Adventurers Guild leader
+npc_eldoria_robin_quickfoot,npc.eldoria.robin_quickfoot,Robin Quickfoot,race.halfling,,36,Full,guild.archers,Bard archer and founder of the unofficial Archers Guild
+npc_eldoria_market_merchant_01,npc.eldoria.market_merchant_01,Test Market Merchant,race.human,,42,Active,guild.merchants,Prototype merchant for first shop and inventory tests
+npc_eldoria_poor_resident_01,npc.eldoria.poor_resident_01,Test Poor Resident,race.demon,,29,Full,,Prototype poor district resident for urgent resource quests
+npc_eldoria_guard_01,npc.eldoria.guard_01,Test Guard,race.orc,,34,Active,guild.knights,Prototype guard for law and safe-zone testing
+npc_eldoria_church_acolyte_01,npc.eldoria.church_acolyte_01,Test Church Acolyte,race.human,,23,Active,guild.church,Prototype church contact for healing and revival hints
+npc_eldoria_thieves_contact_01,npc.eldoria.thieves_contact_01,Test Thieves Contact,race.beastfolk,race.beastfolk.panthera,31,Active,guild.thieves,Prototype hidden contact for dark contract hints
+npc_eldoria_dawnmere_agent_01,npc.eldoria.dawnmere_agent_01,Test Dawnmere Agent,race.elf,race.elf.high,45,Active,house.dawnmere,Prototype political pressure actor tied to House Dawnmere

@@ -1,0 +1,13 @@
+Name,MaterialId,ItemId,DisplayName,Rank,RespawnInGameDays,bEdible
+material_wood_basic,material.wood.basic,material.wood.basic,Basic Wood,F,7,false
+material_stone_basic,material.stone.basic,material.stone.basic,Stone,F,3,false
+material_flax,material.flax,material.flax,Flax,F,5,false
+material_fiber_grass,material.fiber.grass,material.fiber.grass,Grass Fiber,F,5,false
+material_herb_lavender,material.herb.lavender,material.herb.lavender,Lavender,F,5,true
+material_herb_mint,material.herb.mint,material.herb.mint,Mint,F,5,true
+material_herb_rosemary,material.herb.rosemary,material.herb.rosemary,Rosemary,F,5,true
+material_slime_core_basic,material.slime_core.basic,material.slime_core.basic,Basic Slime Core,F,0,false
+material_slime_gel_basic,material.slime_gel.basic,material.slime_gel.basic,Basic Slime Gel,F,0,false
+material_hide_small,material.hide.small,material.hide.small,Small Animal Hide,F,0,false
+material_iron_bar,material.iron_bar,material.iron_bar,Iron Bar,F,0,false
+material_flax_bowstring,material.flax_bowstring,material.flax_bowstring,Flax Bowstring,F,0,false

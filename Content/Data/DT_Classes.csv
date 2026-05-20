@@ -1,0 +1,4 @@
+Name,ClassId,DisplayName,Description,MaxLevel,ClassType,GuildId
+class_progression_zero,class.progression_zero,Progression Zero,The universal starter state before real specialization,1,Starter,
+class_progression_rank_1,class.progression_rank_1,Progression Rank 1,The hard generalist path for players who delay guild specialization,10,Progression,
+class_mage,class.mage,Mage,A rune and component caster who shapes mana through prepared structures,20,Caster,guild.mages
