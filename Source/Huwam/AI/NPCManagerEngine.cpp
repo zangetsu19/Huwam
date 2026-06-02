@@ -93,13 +93,37 @@ void FNPCManagerEngine::AssignRaceAttributes(FNPCAttributes& NPC)
         }
         break;
     case ENPCRace::Dwarf:
-        NPC.SubRace = FMath::RandBool() ? ENPCSubRace::MountainDwarf : ENPCSubRace::HillDwarf;
+        {
+            const TArray<ENPCSubRace> DwarfSubRaces = {
+                ENPCSubRace::MountainDwarf,
+                ENPCSubRace::ForgeDwarf,
+                ENPCSubRace::QuarryDwarf,
+                ENPCSubRace::DeepDwarf,
+                ENPCSubRace::GoldbeardDwarf,
+                ENPCSubRace::IronOathDwarf,
+                ENPCSubRace::DreamforgeDwarf,
+                ENPCSubRace::HearthDwarf
+            };
+            NPC.SubRace = DwarfSubRaces[FMath::RandRange(0, DwarfSubRaces.Num() - 1)];
+        }
         break;
     case ENPCRace::Halfling:
         NPC.SubRace = FMath::RandBool() ? ENPCSubRace::Lightfoot : ENPCSubRace::Stout;
         break;
     case ENPCRace::Orc:
-        NPC.SubRace = FMath::RandBool() ? ENPCSubRace::CommonOrc : ENPCSubRace::HalfOrc;
+        {
+            const TArray<ENPCSubRace> OrcSubRaces = {
+                ENPCSubRace::CommonOrc,
+                ENPCSubRace::HalfOrc,
+                ENPCSubRace::WarOrc,
+                ENPCSubRace::StonehideOrc,
+                ENPCSubRace::RedtuskOrc,
+                ENPCSubRace::GrayOrc,
+                ENPCSubRace::IronboundOrc,
+                ENPCSubRace::WildOrc
+            };
+            NPC.SubRace = OrcSubRaces[FMath::RandRange(0, OrcSubRaces.Num() - 1)];
+        }
         break;
     case ENPCRace::Ogre:
         NPC.SubRace = FMath::RandBool() ? ENPCSubRace::HillOgre : ENPCSubRace::SwampOgre;

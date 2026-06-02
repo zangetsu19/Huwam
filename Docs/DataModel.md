@@ -212,7 +212,7 @@ Used for inventory, equipment, crafting, market, loot, storage, and quest demand
 | Description | Text | Short text. |
 | StackLimit | Number | Basic items often 99 per slot. |
 | Weight | Number | Carry or storage use. |
-| BaseValueGold | Number | Market baseline. |
+| BaseValueCopper | Number | Copper-native market baseline for all denominations. |
 | AttackPower | Number | Starter offensive contribution when equipped or used. |
 | DefensePower | Number | Starter defensive contribution when equipped. |
 | ManaPower | Number | Starter magical contribution when equipped or used as focus. |
@@ -299,7 +299,7 @@ Used for combat, ecology, harvesting, taming, dungeons, quests, and economy.
 | Drops | Loot table | Materials and items. |
 | PrimaryDropItemId | ID | Simple V0.1 monster drop. |
 | PrimaryDropQuantity | Number | Quantity for the simple V0.1 monster drop. |
-| GoldReward | Number | Gold payout after defeat. |
+| CurrencyRewardCopper | Number | Copper-native currency payout after defeat. |
 | ExperienceReward | Number | Experience payout after defeat. |
 | EdibleParts | ID list | Which parts can be eaten. |
 | HarvestRequirements | Tool/skill list | Skinning knife, alchemy, etc. |
@@ -370,8 +370,8 @@ Used for guild boards, NPC requests, contracts, tutorials, and world events.
 | Objectives | Objective list | Later multi-objective expansion. |
 | TimeLimit | Time or none | Uses living server time. |
 | Urgency | Enum | Normal, timed, urgent, emergency. |
-| Rewards | Reward list | Gold, items, XP, reputation, relationship, map, unlock. |
-| RewardGold | Number | First-pass gold reward. |
+| Rewards | Reward list | Currency, items, XP, reputation, relationship, map, unlock. |
+| RewardCopper | Number | First-pass copper-native currency reward. |
 | RewardExperience | Number | First-pass experience reward. |
 | FailureRules | Struct | What happens if ignored or failed. |
 | PartySharingRules | Struct | Who can see and complete it. |
@@ -381,13 +381,45 @@ Used for guild boards, NPC requests, contracts, tutorials, and world events.
 
 This is the recommended first content set for V0.1.
 
+The first playable slice can still stay narrow, but character creation now carries a broader first-pass menu set so the initial UI can show Huwan's major identity choices without waiting on a later data pass.
+
 ### Races
 
 | ID | Display Name | Purpose |
 |---|---|---|
 | `race.human` | Human | All-rounder baseline. |
 | `race.elf` | Elf | Long life, mana, knowledge culture. |
-| `race.elf.dark` | Dark-Elf | Outlier reputation, stealth, mystery, Laucian relevance. |
+| `race.dwarf` | Dwarf | Craft, labor, defense, and fortress culture. |
+| `race.orc` | Orc | Fear, strength, law, and escort power. |
+| `race.demon` | Demon | Deep mana, prejudice, and dangerous reputation. |
+| `race.beastfolk` | Beastfolk | Animal senses, exploitation pressure, and nature paths. |
+| `race.fae` | Fae | Dreamlike strangeness and pact logic. |
+| `race.halfling` | Halfling | Extra prototype support for Eldoria-linked Halfling content. |
+
+`Dark-Elf` now belongs in `Sub-Race Data` under `race.elf` for character creation.
+
+### Prototype Sub-Races
+
+The first character creation data pass now includes approved Human baselines, representative Elf/Orc/Demon/Beastfolk/Fae rows, and the approved Dwarf baseline set.
+
+| ID | Display Name | Parent Race | Purpose |
+|---|---|---|---|
+| `race.dwarf.mountain` | Mountain Dwarf | `race.dwarf` | Classic mountain miner, smith, and fortress builder baseline. |
+| `race.dwarf.forge` | Forge Dwarf | `race.dwarf` | Furnace, smithing, heat discipline, and metal craft baseline. |
+| `race.dwarf.quarry` | Quarry Dwarf | `race.dwarf` | Masonry, civic construction, roads, walls, and repair baseline. |
+| `race.dwarf.deep` | Deep Dwarf | `race.dwarf` | Cavern, tunnel, mine, sealed ruin, and pressure endurance baseline. |
+| `race.dwarf.goldbeard` | Goldbeard Dwarf | `race.dwarf` | Appraisal, contracts, trade, banking, and high-value gear baseline. |
+| `race.dwarf.iron_oath` | Iron Oath Dwarf | `race.dwarf` | Duty, sacred contracts, defense, and disciplined labor baseline. |
+| `race.dwarf.dreamforge` | Dreamforge Dwarf | `race.dwarf` | Ione-touched dream blueprints and magical crafting baseline. |
+| `race.dwarf.hearth` | Hearth Dwarf | `race.dwarf` | Tavern, food, brewing, comfort, morale, and community work baseline. |
+| `race.orc.common` | Common Orc | `race.orc` | Green clanned brute, tusks, ugly face, and battle-ready baseline. |
+| `race.orc.half` | Half-Orc | `race.orc` | Half-Human Orc bridge with green skin, smaller tusks, and Human-influenced features. |
+| `race.orc.war` | War Orc | `race.orc` | Brown-red war-painted fighter with dense chiseled muscle baseline. |
+| `race.orc.stonehide` | Stonehide Orc | `race.orc` | Stone-gray rocky hide, protrusions, metal armor, and tank baseline. |
+| `race.orc.redtusk` | Redtusk Orc | `race.orc` | Blood-red bloodshot duelist with red tusk and fight-ready baseline. |
+| `race.orc.gray` | Gray Orc | `race.orc` | Gray-skinned intelligent neutral scholar-guard baseline. |
+| `race.orc.ironbound` | Ironbound Orc | `race.orc` | Pink pig-like laborer with ironbound history and resilient dignity baseline. |
+| `race.orc.wild` | Wild Orc | `race.orc` | Very short green helmeted tall-grass ambusher baseline. |
 
 ### Classes
 
@@ -395,17 +427,30 @@ This is the recommended first content set for V0.1.
 |---|---|---|
 | `class.progression_zero` | Progression Zero | Starting state. |
 | `class.progression_rank_1` | Progression Rank 1 | Generalist noob progression. |
+| `class.archer` | Archer | Bow, scouting, and Archers Guild starter path. |
+| `class.priest` | Priest | Faith, healing rites, and divine support. |
+| `class.knight` | Knight | Protection, duty, and escort path. |
+| `class.adventurer_rank_f` | Adventurer Rank F | Entry quest and F-rank field path. |
+| `class.thief` | Thief | Locks, stealth, and shadowed contract work. |
 | `class.mage` | Mage | First rune and mana prototype class. |
 
 ### Jobs
 
 | ID | Display Name | Purpose |
 |---|---|---|
+| `job.builder` | Builder | Repair and construction loop. |
 | `job.adventurer` | Adventurer | Guild quests and F-rank combat. |
 | `job.hunter_gatherer` | Hunter/Gatherer | Resource loop. |
+| `job.officer` | Officer | Law, patrol, and authority loop. |
 | `job.blacksmith` | Blacksmith | Starter weapon/tool crafting. |
 | `job.merchant` | Merchant | Market and inventory loop. |
+| `job.tavern_owner` | Tavern Owner | Food, rooms, staff, and rumor loop. |
 | `job.farmer` | Farmer | Food economy and herb/field loop. |
+| `job.fencer` | Fencer | Dueling and precision weapon loop. |
+| `job.dungeon_explorer` | Dungeon Explorer | Dungeon route and map loop. |
+| `job.craftsman` | Craftsman | Everyday goods production loop. |
+| `job.baker` | Baker | Food production and town supply loop. |
+| `job.contractor` | Contractor | Crews, permits, and build-order loop. |
 
 ### Starter Spells
 
@@ -487,13 +532,13 @@ This is the recommended first content set for V0.1.
 
 ### First Quests
 
-| ID | Display Name | Purpose |
-|---|---|---|
-| `quest.tutorial.progression_zero` | Welcome to Progression Zero | Tutorial flow. |
-| `quest.eldoria.guild_registration` | First Guild Registration | Adventurers Guild onboarding. |
-| `quest.eldoria.slimes_in_tall_grass` | Slimes in the Tall Grass | Basic combat and harvesting. |
-| `quest.eldoria.gather_field_supplies` | Gather Field Supplies | Resource gathering. |
-| `quest.eldoria.repair_basic_tool` | Repair a Basic Tool | Crafting and NPC inventory update. |
+| ID | Display Name | Repeatable | Purpose |
+|---|---|---|---|
+| `quest.tutorial.progression_zero` | Welcome to Progression Zero | No | Tutorial flow. |
+| `quest.eldoria.guild_registration` | First Guild Registration | No | Adventurers Guild onboarding. |
+| `quest.eldoria.slimes_in_tall_grass` | Slimes in the Tall Grass | Yes | Basic combat and harvesting. |
+| `quest.eldoria.gather_field_supplies` | Gather Field Supplies | Yes | Resource gathering. |
+| `quest.eldoria.repair_basic_tool` | Repair a Basic Tool | Yes | Crafting and NPC inventory update. |
 
 ## Implementation Order
 
@@ -501,26 +546,67 @@ Recommended next technical order:
 
 1. Create C++ enums and structs for the data above. **Done for V0.1**
 2. Create the first DataTables or CSV files. **Done for V0.1**
-3. Create a data registry that can reference imported DataTables. **Started**
-4. Import CSV files into Unreal as DataTable assets. **Next**
-5. Create a `UHuwamDataRegistry` Data Asset and assign the imported tables.
-6. Show loaded records in a debug screen or log.
-7. Build inventory and item stack behavior using the loaded item data. **Started**
-8. Build equipment slots and equipment stat totals. **Started**
-9. Build character stats and derived power summaries. **Started**
-10. Build starter combat resolution. **Started**
-11. Build the first Basic Slime enemy encounter. **Started**
-12. Build the reward bridge for gold, experience, and quest progress. **Started**
-13. Build starter quest runtime using quest data. **Started**
-14. Build live content pack manifests for DLC and expansion planning. **Started**
-15. Build the HUD/menu data adapter. **Started**
-16. Build a starter prototype player actor for the first playable loop. **Started**
-17. Build character creation using race/class/job data. **Started**
-18. Build a character creation menu data adapter.
+3. Create a data registry that can reference imported DataTables. **Done for prototype**
+4. Auto-load missing runtime tables from `Content/Data` CSV files. **Done for prototype**
+5. Import CSV files into Unreal as DataTable assets. **Optional production path**
+6. Create a `UHuwamDataRegistry` Data Asset and assign the imported tables. **Optional production path**
+7. Show loaded records in a debug screen or log. **Done for prototype**
+8. Build inventory and item stack behavior using the loaded item data. **Started**
+9. Build equipment slots and equipment stat totals. **Started**
+10. Build character stats and derived power summaries. **Started**
+11. Build starter combat resolution. **Started**
+12. Build the first Basic Slime enemy encounter. **Started**
+13. Build the reward bridge for currency, experience, and quest progress. **Started**
+14. Build starter quest runtime using quest data. **Started**
+15. Build live content pack manifests for DLC and expansion planning. **Started**
+16. Build the HUD/menu data adapter. **Started**
+17. Build a starter prototype player actor for the first playable loop. **Started**
+18. Build character creation using race/class/job data. **Started**
+19. Build a character creation menu data adapter. **Started**
+20. Expand first-pass creation data for major races and starter paths. **Done**
+21. Add approved Human sub-race art baselines to character creation data and UI card language. **Done**
+22. Build the first simple character creation screen. **Started**
+23. Hand the confirmed character into Laucian's tutorial lab. **Started**
+24. Add the first physical tutorial-lab interaction lesson. **Started**
+25. Add the first inventory tutorial lesson. **Started**
+26. Add the first equipment tutorial lesson. **Started**
+27. Add the first combat tutorial lesson. **Started**
+28. Add the first map tutorial lesson. **Started**
+29. Add the first quest tutorial lesson. **Started**
+30. Add the first gathering or pickup tutorial lesson. **Started**
+31. Build the first reusable F-rank gathering object outside the tutorial lab. **Started**
+32. Add the first Eldoria gathering quest start and turn-in path. **Started**
+33. Add gathered-material delivery and NPC stock updates on quest turn-in. **Started**
+34. Gate the first generated shortage request from NPC supply state. **Started**
+35. Add a first NPC supply trade and use path that can accept useful surplus and lower stock through NPC activity. **Started**
+36. Connect the first NPC stock use to a timed routine or need. **Started**
+37. Let repeatable NPC and guild requests restart when their world condition returns. **Started**
+38. Build the first centralized living-server time service for resources, NPC routines, and quest timers. **Started**
+39. Connect food spoilage to shared Huwam time. **Started**
+40. Add container/storage modifiers for spoilage and preservation. **Started**
+41. Add dedicated storage assignment UI for pouch, chest, cooled, and magical storage routing. **Started**
+42. Add survival vitals for hunger, thirst, and social energy. **Started**
+43. Add starvation, dehydration, unsafe-food, and social-isolation effects. **Started**
+44. Add tavern, well, food, and rest services that restore survival needs without time skipping. **Started**
+45. Add placed Eldoria service actors for taverns, wells, campfires, and inn rooms. **Started**
+46. Add prices, ownership, and faction access rules for survival services. **Started**
+47. Route paid service revenue into NPC, guild/faction, and settlement ledger records. **Started**
+48. Add spendable NPC wallets, guild/faction funds, and settlement treasury balances. **Started**
+49. Connect treasury and wallet balances to service upkeep. **Started**
+50. Connect underfunded services to repair, shortage, and quest pressure. **Started**
+51. Surface economy ledger and service pressure in HUD/menu debug data. **Started**
+52. Add prototype repair/service-restoration quest generation from service pressure. **Started**
+53. Add service restoration quest turn-in effects that reopen or stabilize services. **Started**
+54. Persist economy ledger and account balances into prototype saves. **Started**
+55. Persist placed survival-service funding/underfunded state by service identity. **Started**
+56. Add authored stable service instance IDs for all placed Eldoria services. **Started**
+57. Add service-specific repair material requirements and restoration contribution types. **Next**
 
 ## Implementation Started
 
 The first Unreal-facing data layer now exists.
+
+The registry now has a prototype-safe runtime bootstrap. If no registry asset is configured, `UHuwamDataSubsystem` creates an active transient registry and loads all missing tables from the CSV files in `Content/Data`. The editor validation runner checks known race, content pack, class, item, spell, monster, NPC, and quest rows before playing through the vertical slice.
 
 Created C++ header:
 
@@ -543,6 +629,8 @@ Created data smoke test actor:
 
 Created first gameplay component:
 
+- `Source/Huwam/Gameplay/HuwamTimeSubsystem.h`
+- `Source/Huwam/Gameplay/HuwamTimeSubsystem.cpp`
 - `Source/Huwam/Gameplay/HuwamInventoryComponent.h`
 - `Source/Huwam/Gameplay/HuwamInventoryComponent.cpp`
 - `Source/Huwam/Gameplay/HuwamEquipmentComponent.h`
@@ -565,6 +653,8 @@ Created first gameplay component:
 - `Source/Huwam/Gameplay/HuwamPrototypePlayerActor.cpp`
 - `Source/Huwam/Gameplay/HuwamCharacterCreationComponent.h`
 - `Source/Huwam/Gameplay/HuwamCharacterCreationComponent.cpp`
+- `Source/Huwam/Gameplay/HuwamCharacterCreationMenuDataComponent.h`
+- `Source/Huwam/Gameplay/HuwamCharacterCreationMenuDataComponent.cpp`
 
 Created starter CSV data tables:
 
@@ -644,6 +734,78 @@ Prototype player actor notes:
 Character creation prototype notes:
 
 - `Docs/CharacterCreationPrototype.md`
+
+Character creation menu data prototype notes:
+
+- `Docs/CharacterCreationMenuDataPrototype.md`
+
+Race 3D art bible notes:
+
+- `Docs/Race3DArtBible.md`
+
+Character creation screen prototype notes:
+
+- `Docs/CharacterCreationScreenPrototype.md`
+
+Tutorial lab handoff prototype notes:
+
+- `Docs/TutorialLabHandoffPrototype.md`
+
+Tutorial lab interaction prototype notes:
+
+- `Docs/TutorialLabInteractionPrototype.md`
+
+Tutorial lab inventory prototype notes:
+
+- `Docs/TutorialLabInventoryPrototype.md`
+
+Tutorial lab equipment prototype notes:
+
+- `Docs/TutorialLabEquipmentPrototype.md`
+
+Tutorial lab combat prototype notes:
+
+- `Docs/TutorialLabCombatPrototype.md`
+
+Tutorial lab map prototype notes:
+
+- `Docs/TutorialLabMapPrototype.md`
+
+Tutorial lab quest prototype notes:
+
+- `Docs/TutorialLabQuestPrototype.md`
+
+Tutorial lab gathering prototype notes:
+
+- `Docs/TutorialLabGatheringPrototype.md`
+
+World gathering resource prototype notes:
+
+- `Docs/GatheringResourcePrototype.md`
+
+Gather Field Supplies quest prototype notes:
+
+- `Docs/GatherFieldSuppliesQuestPrototype.md`
+
+NPC supply delivery prototype notes:
+
+- `Docs/NpcSupplyDeliveryPrototype.md`
+
+NPC supply shortage gate prototype notes:
+
+- `Docs/NpcSupplyShortageGatePrototype.md`
+
+NPC supply trade and use prototype notes:
+
+- `Docs/NpcSupplyTradeUsePrototype.md`
+
+Currency prototype notes:
+
+- `Docs/CurrencyPrototype.md`
+
+Guild contract board prototype notes:
+
+- `Docs/GuildContractBoardPrototype.md`
 
 ## V0.1 Definition Of Done
 

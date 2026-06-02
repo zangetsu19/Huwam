@@ -2339,21 +2339,23 @@ Orc sub-races should preserve the core Orc identity of strength, fear, toughness
 
 | Sub-Race | Identity | Mana Well | Core Traits | Weaknesses | Strong Synergies |
 | --- | --- | --- | --- | --- | --- |
-| Common Orc | Baseline Orc found across Tozraca and mixed cities. | Low to Average | Strength, tusks, green skin, intimidation. | Low academic affinity, feared socially. | Guard, Escort, Adventurer, Knight. |
-| Half-Orc | Mixed Orc lineage, often bridging Orc strength and another culture's flexibility. | Average | Strength, social bridge, mixed identity, resilience. | Prejudice from both sides. | Adventurer, Progression Rank, Guard, Merchant. |
-| War Orc | Ixnir-aligned Orcs raised around battle, law enforcement, and visible force. | Average | War instinct, courage, patrol discipline. | Quick to escalate conflict. | Officer, Knight, Paladin, Bounty Hunter. |
-| Stonehide Orc | Extremely durable Orcs known for thick skin and high pain tolerance. | Low | Defense, endurance, body toughness. | Slow, less magically flexible. | Tank, Guard, Escort, Dungeon Explorer. |
-| Redtusk Orc | Aggressive tusk-proud Orc line associated with intimidation and dueling. | Low to Average | Terrifying Presence, melee pressure, fear tactics. | Scary reputation worsens social trust. | Barbarian-style paths, Bounty Hunter, Adventurer. |
-| Gray Orc | Older, calmer Orc line known for peacekeeping, restraint, and hard-won wisdom. | Average | Discipline, negotiation through strength, controlled presence. | Seen as less fearsome by violent Orc circles. | Officer, Guard Captain, Peacekeeper, Monk-like paths. |
-| Ironbound Orc | Orcs shaped by armor, discipline, and duty contracts. | Average | Heavy armor comfort, escort discipline, oathkeeping. | Rigid duty, poor stealth. | Knight, Paladin, Guard, Caravan Escort. |
-| Wild Orc | Borderland Orcs tied to plains, canyons, and survival combat. | Low to Average | Tracking, endurance, harsh terrain movement. | Poor court manners, less city trust. | Hunter/Gatherer, Adventurer, Scout, Raider-style roles. |
+| Common Orc | Classic green clanned Orc found across Tozraca and mixed cities. | Low to Average | Tall build, tusks, ugly brutish face, clan scars, intimidation, battle-ready posture. | Low academic affinity, feared socially. | Guard, Escort, Adventurer, Knight. |
+| Half-Orc | Half-Human Orc lineage bridging Orc strength and Human flexibility. | Average | Green skin, smaller tusks, shorter leaner build, more Human attractive features, social bridge identity. | Prejudice from both sides; less accepted by pure-lineage Orcs. | Adventurer, Progression Rank, Guard, Merchant. |
+| War Orc | Brown-red Orcs raised around battle, law enforcement, and visible force. | Average | Dense chiseled muscle, mandatory war paint, war instinct, courage, patrol discipline. | Quick to escalate conflict, often assumed violent. | Officer, Knight, Paladin, Bounty Hunter. |
+| Stonehide Orc | Stone-colored Orcs with rocky hide and unusually high pain tolerance. | Low | Rocky skin protrusions, metal armor comfort, defense, endurance, body toughness. | Slow, less magically flexible. | Tank, Guard, Escort, Dungeon Explorer. |
+| Redtusk Orc | Blood-red aggressive tusk-proud Orc line associated with intimidation and dueling. | Low to Average | Bloodshot eyes, red tusks or tusk marks, Terrifying Presence, melee pressure, fear tactics. | Scary reputation worsens social trust; bloodthirsty impulses can provoke trouble. | Barbarian-style paths, Bounty Hunter, Adventurer. |
+| Gray Orc | Intelligent, neutral, studious Orc line known for restraint and hard-won wisdom. | Average | Gray skin, calm passive posture, discipline, study, negotiation through strength, controlled presence. | Seen as less fearsome by violent Orc circles. | Officer, Guard Captain, Peacekeeper, Scholar-guard paths. |
+| Ironbound Orc | Pink pig-like Orc line historically used as slaves and hard laborers. | Average | Hard-working bodies, iron bands or broken chain history, labor endurance, resilience, dignity under pressure. | Oppression trauma, social exploitation, poor stealth. | Builder, Miner, Guard, Caravan Escort, Laborer paths. |
+| Wild Orc | Very short green ambush Orcs that hide in tall grass and strike with small axes. | Low to Average | Cartoonish compact build, armored helmets, small axes, tracking, ambush, harsh terrain movement. | Poor court manners, less city trust, physically small for Orc standards. | Hunter/Gatherer, Adventurer, Scout, Raider-style roles. |
 
 ##### Orc Sub-Race Notes
 
 - Orcs should not lean toward high Intelligence as a default racial fantasy.
 - Orc sub-races should not be weak.
 - Orcs can be peaceful or honorable, but the world often reads them through fear first.
-- Half-Orcs are important because they can challenge anti-Orc prejudice while still carrying visible Orc identity.
+- Half-Orcs are the approved half-Human branch for normal character creation; Raelae's Half-Orc/Half-Elf identity is protected separately.
+- Ironbound Orc slavery history should be treated seriously and with dignity, not as spectacle.
+- Wild Orcs are adult Orcs despite their tiny cartoonish build.
 
 ### Demon Race Profile
 
@@ -5717,7 +5719,7 @@ Starter market value bands:
 - Standard: small hides, small bones, slime gel, flax, simple tools.
 - Useful: slime cores, tanned hide, iron bars, bows, armor pieces, pouches.
 - Expensive early: alchemy kits, repair kits, magical armbands, enchanted rings, good maps.
-- High fixed demand: gold, because gold remains valuable regardless of world inventory.
+- High fixed demand: official currency, because copper, silver, gold, platinum, and Marquis Diamond Prints remain valuable regardless of normal inventory pressure.
 
 This starter data set gives the first menus enough content to display real items, real recipes, real skills, real abilities, and early trade behavior.
 
@@ -11463,6 +11465,26 @@ An NPC can gain or lose items through:
 
 Wealth can rise or fall based on work success, market prices, family expenses, guild fees, taxes, illness, crime, debt, trade, and player action.
 
+#### Essential NPC Surplus Buying
+
+Essential NPCs should be able to buy profession-relevant resources from players even when they are not in immediate need.
+
+Examples:
+
+- A blacksmith can buy extra wood, coal, ore, leather, repair parts, or tool materials before a forge shortage becomes urgent.
+- A builder can buy extra wood, stone, clay, rope, nails, fittings, and repair materials while current jobs are still supplied.
+- A baker, farmer, healer, tavern owner, priestly care worker, merchant, contractor, guild quartermaster, or civic worker can buy useful stock for their own production and local supply role.
+
+This trade path lets a player with surplus materials sell into the world instead of waiting for a shortage quest. Bought goods increase the NPC's stock, local professional supply, or linked settlement stockpile according to the buyer's role.
+
+Surplus buying should reduce emergency pressure:
+
+- Healthy stock makes urgent resource quests less likely.
+- A well-supplied professional can keep producing goods or services longer.
+- Players can stabilize a town through ordinary trade, not only by answering requests after something has already gone wrong.
+
+NPCs should not buy every object blindly or with infinite money. Their profession, storage, wealth, expected future work, local prices, guild rules, trust, legality, and spoilage risk decide what they will buy, how much they will pay, and when they stop buying.
+
 ### Dynamic Quest Generation
 
 NPCs generate quests when they lack the means to complete a task or solve a need.
@@ -11490,17 +11512,18 @@ NPC inventory and production feed Eldoria's economy.
 The basic loop:
 
 1. NPC needs task completion.
-2. NPC checks inventory, wealth, skills, tools, safety, and access to materials.
-3. If the NPC can complete the task, they consume resources and produce goods, services, or social outcomes.
-4. If the NPC cannot complete the task, they generate a request.
-5. Requests become direct favors, guild quests, market orders, or dark contracts.
-6. Player or other NPCs fulfill the request.
-7. NPC inventory updates.
-8. Market supply changes.
-9. Prices fluctuate.
-10. The cycle continues when inventory runs low again.
+2. NPC also accepts useful profession-relevant surplus through ordinary trade when stock, wealth, storage, and rules allow it.
+3. NPC checks inventory, wealth, skills, tools, safety, and access to materials.
+4. If the NPC can complete the task, they consume resources and produce goods, services, or social outcomes.
+5. If the NPC cannot complete the task, they generate a request.
+6. Requests become direct favors, guild quests, market orders, or dark contracts.
+7. Player or other NPCs fulfill the request or sell useful stock before the request becomes urgent.
+8. NPC inventory updates.
+9. Market supply changes.
+10. Prices fluctuate.
+11. The cycle continues when inventory runs low again.
 
-This creates a steady flow of quests while keeping the economy connected to actual needs rather than random task generation.
+This creates a steady flow of quests while keeping the economy connected to actual needs rather than random task generation. It also lets ordinary player trade prevent some shortages before they become urgent.
 
 ### Market and Auction Fluctuation
 
@@ -11514,7 +11537,23 @@ Examples:
 - Too many gathered herbs lower common potion prices but may increase demand for storage, export, or specialist crafting.
 - Bandit activity raises escort prices and lowers import reliability.
 
-Gold is the exception. Gold is always in high demand, no matter how much world inventory exists. Its exchange value remains fixed at a high rate to stabilize the economy and make wealth meaningful.
+#### Huwan Currency
+
+Huwan values trade through five official denominations:
+
+| Denomination | Exchange Rule |
+|---|---|
+| Copper | Smallest ordinary unit. |
+| Silver | `1000` copper equals `1` silver. |
+| Gold | `1000` silver equals `1` gold. |
+| Platinum | `1000` gold equals `1` platinum. |
+| Marquis Diamond Print | `10000` platinum equals `1` Marquis Diamond Print. |
+
+Marquis Diamond Prints are ultra-high-value instruments for nobles, kingdoms, banking houses, massive land deals, legendary trade, and treasury movement. A Marquis Diamond Print looks like a full diamond card stamped with the local Marquis House stamp so its issuing authority is visibly tied to a region and ruler.
+
+Currency is the economy exception. Copper, silver, gold, platinum, and Marquis Diamond Prints remain broadly desired even when normal stockpiles shift. Currency exchange should stay stable enough to make wages, contracts, taxes, trade, bribes, treasure, and wealth meaningful.
+
+Runtime values should use copper as the smallest exact value. Interfaces can display a copper total as its copper, silver, gold, platinum, and Marquis Diamond Print breakdown.
 
 ### NPC Memory
 
@@ -11582,6 +11621,14 @@ Background simulated groups include:
 - Routine laborers who are not currently tied to a major economic, social, or quest event
 
 Background NPCs can be promoted into full simulation when their life becomes important. For example, a merchant's child might become fully simulated after inheriting a business, witnessing a crime, joining a guild, gaining unusual magic, or becoming central to a quest.
+
+#### Foreground And Background Conversation Rule
+
+Huwan is an MMORPG-style living world. NPC conversation depth should follow player-facing importance and simulation depth.
+
+Foreground NPCs are NPCs currently present in an important player-facing interaction, quest scene, social scene, shop scene, companion scene, or meaningful live exchange with other NPCs. Foreground NPCs should support ChatGPT-like conversations with players and with other foreground NPCs. Those conversations should be grounded in memory, personality, needs, relationships, inventory, reputation, law, and current world state so NPCs can learn and grow instead of only repeating lines.
+
+Background NPCs should use lighter dialogue behavior: standard loop sayings, ambient barks, routine conversations, schedule chatter, and summary simulation. They should still feel like part of the world, but they should not consume the same conversational depth budget as foreground NPCs until player attention, quest importance, social importance, or world events promote them forward.
 
 ### NPC Memory, Personality, And AI Simulation Engine V1.0
 
@@ -11785,7 +11832,16 @@ Action scoring factors:
 
 #### Dynamic Quest Generation Rules
 
-NPC-generated quests should come from real blockers.
+NPC-generated quests should come from real blockers or real efficiency judgments.
+
+Core rules:
+
+- Not every player receives the same quest set.
+- NPCs first judge whether they can solve the problem through their own skills, tools, money, inventory, relationships, schedule, and access.
+- If the NPC cannot solve the task, the task may become a quest.
+- If the NPC can solve the task but sees a player, party, guild, faction, or contractor as faster, safer, cheaper, more trusted, more skilled, or more politically useful, the task may still become a quest.
+- Quest visibility should depend on NPC need, route, urgency, player suitability, relationships, reputation, location, timing, and whether someone else already solved or claimed the work.
+- A living world should prefer resolved needs, changed requests, and alternate opportunities over repeating identical asks for every arriving player.
 
 Quest generation blockers:
 
@@ -11805,6 +11861,14 @@ Quest generation blockers:
 - Dungeon resource need
 - Faction pressure
 - Relationship crisis
+
+Quest generation efficiency triggers:
+
+- Player has the right tool, skill, class, job, spell, mount, tame, map, faction access, or reputation.
+- Player can travel faster or survive danger the NPC cannot.
+- Player can gather, fight, craft, negotiate, investigate, steal, heal, escort, or deliver with less risk.
+- NPC wants to keep working, caring for family, guarding a post, hiding a secret, or protecting stock instead of leaving.
+- NPC trusts this player more than a public board, or distrusts them enough to route the work through a formal contract.
 
 Quest route options:
 
@@ -14166,11 +14230,11 @@ These items are the first blueprint examples. They cover mobility, economy, magi
 | Visual Reference | C:/Users/ultim/Downloads/MIq8B.jpg |
 | Rights Notes | User-submitted reference. Ownership/license should be confirmed if needed before final production use. |
 
-##### Legendary True Login Characters
+##### Legendary True And Special NPC/Player Characters
 
-Laucian, Ieke, and Kaneke are **Legendary True** characters, but they are not ordinary true NPCs.
+Laucian, Ieke, and Kaneke are **Legendary True** characters, but they are not ordinary true NPCs. Lani, Raelae, and Lahua are protected **Special NPC/Player** characters and should be handled with similar care even if their final ranks and login permissions stay lower than the Legendary True trio.
 
-They should not be treated as normal AI-simulated citizens, shopkeepers, quest givers, or background schedule NPCs. They are pre-authored login identities with existing lore, gear, reputation, and special permissions.
+They should not be treated as normal AI-simulated citizens, shopkeepers, quest givers, or background schedule NPCs. They are pre-authored login identities with existing lore, gear, reputation, and special permissions or protection.
 
 Legendary True rules:
 
@@ -14187,10 +14251,13 @@ Login types:
 | Character | Login Type | Role | Signature Gear | Notes |
 | --- | --- | --- | --- | --- |
 | Laucian Xilocent Goldpetal | Moderator Login | Mages Guild leader, Dawnspire master, SSS-ranked moderator identity | Laucian's World Tree Staff | Used by the creator/moderator to manage magic, grant magic-related skills, run Dawnspire, and act inside the world. |
-| Ieke | Special Guest Login | Legendary Half-Orc Barbarian tribute character | Ieke's Umbra Pit Broadsword | Created as a tribute character for a friend to play with pre-existing lore, weapon identity, and legendary presence. |
+| Ieke | Special Guest Login | Legendary Orc Barbarian tribute character | Ieke's Umbra Pit Broadsword / battle axe loadout | Created as a tribute character for a friend to play with pre-existing lore, weapon identity, and legendary presence. Current special art baseline is a full Orc barbarian with battle scars and a battle-ready axe. |
 | Kaneke | Special Guest Login | Legendary Dark-Elf Rogue tribute character | Moon Cutter | Created as a tribute character for a friend to play with pre-existing lore, weapon identity, and legendary presence. |
+| Lani | Special NPC/Player Slot | Half-Elf/Half-Dwarf hybrid mage-adventurer | Maui | Short like a Dwarf, beardless, clear Elf ears, feminine hybrid presence, and a curved-top staff named Maui. Protected for future special login, companion, event, or story use. |
+| Raelae | Special NPC/Player Slot | Half-Orc/Half-Elf ranger | Longbow and ranger kit | Tall and graceful like an Elf, clear Elf ears, green skin, short tusks, and a wilderness ranger identity. Protected for future special login, companion, event, or story use. |
+| Lahua | Special NPC/Player Slot | Fae Sprite child druid | Flower dress and tiny druid charm | Child Fae Sprite animal lover with a flower dress, gentle druid magic, and small animal companions. Protected as a noncombat story, companion, or event character. |
 
-Laucian is the only one of these three with moderator authority by default. Ieke and Kaneke are special guest characters, not admin characters, unless explicit server permissions are granted later.
+Laucian is the only one of these protected characters with moderator authority by default. Ieke and Kaneke are special guest characters, while Lani, Raelae, and Lahua are special NPC/player characters. None of them gain admin power unless explicit server permissions are granted later.
 
 Special Guest Login rules:
 
@@ -14202,6 +14269,14 @@ Special Guest Login rules:
 - They should not be required for ordinary players to progress.
 - They can inspire players, challenge players, mentor players, or appear during major events.
 
+Special NPC/Player slot rules:
+
+- A special NPC/player character can be reserved before the final account or story owner is chosen.
+- The normal NPC simulation engine should not create inventory-shortage quests, daily chores, or random schedules for them unless the Admin explicitly enables a scripted appearance.
+- Their signature gear is protected while the character is protected.
+- They can appear as companions, event guests, tutorial cameos, mentor figures, tavern rumors, legacy quest contacts, or future guest logins.
+- They should receive a dedicated data record later instead of being forced into ordinary NPC tables.
+
 Offline representation:
 
 - If a Legendary True character is not logged in, the world may reference them through history, public rumor, old war records, guild stories, paintings, statues, wanted/fame boards, weapon legends, or legacy quests.
@@ -14209,6 +14284,62 @@ Offline representation:
 - Their true body, true gear, and true choices belong to the approved login user.
 
 This keeps the tribute characters meaningful. They are not disposable NPCs; they are living seats at the table for real people.
+
+###### Lani
+
+| Field | Direction |
+| --- | --- |
+| Name | Lani |
+| Protected Type | Special NPC/Player Slot |
+| Lineage | Half-Elf / Half-Dwarf |
+| Visual Read | Short like a Dwarf, sturdy build, no beard, clear Elf ears, feminine hybrid face, practical mage-adventurer outfit. |
+| Signature Gear | Maui, a polished dark-wood staff with Dwarven metal bands and a graceful curved top. |
+| Role Direction | Reserved special character who can become a protected companion, guest login, mentor, or story-event player identity. |
+| Simulation Rule | Do not place Lani into the ordinary NPC simulation loop until a special appearance/controller system exists. |
+| Gameplay Hook | Bridges Dwarven craft and Elven magic; ideal for staff magic, runes, hybrid diplomacy, and hidden mixed-lineage storylines. |
+| Art Baseline | Approved from the generated Lani concept: short, beardless, Elf ears, curved-top Maui staff, Dwarven craft plus Elven mana styling. |
+
+###### Raelae
+
+| Field | Direction |
+| --- | --- |
+| Name | Raelae |
+| Protected Type | Special NPC/Player Slot |
+| Lineage | Half-Orc / Half-Elf |
+| Visual Read | Adult female ranger, tall and graceful like an Elf, clear Elf ears, green skin, short tusks, lean athletic muscle, and wilderness-hardened beauty. |
+| Signature Gear | Longbow, quiver, ranger knife, forest leathers, travel cloak, and practical wilderness kit. |
+| Role Direction | Reserved special character who can become a protected companion, guest login, ranger mentor, borderland scout, or story-event player identity. |
+| Simulation Rule | Do not place Raelae into the ordinary NPC simulation loop until a special appearance/controller system exists. |
+| Gameplay Hook | Bridges Orc endurance and Elven precision; ideal for ranger paths, wilderness survival, mixed-lineage diplomacy, and border patrol stories. |
+| Art Baseline | Approved from the generated Raelae concept: Elf grace, Orc green skin, short tusks, visible Elf ears, and a bow-forward ranger silhouette. |
+
+###### Lahua
+
+| Field | Direction |
+| --- | --- |
+| Name | Lahua |
+| Protected Type | Special NPC/Player Slot |
+| Lineage | Fae Sprite |
+| Visual Read | Child Fae Sprite druid, tiny and innocent, flower dress, small wings, soft face, bright curious eyes, and gentle animal-lover presence. |
+| Signature Gear | Flower dress, tiny druid charm or mini staff, seed pouch, and small nature tokens. |
+| Role Direction | Reserved special character for protected story use, animal friendship quests, druidic events, safe companion moments, or future special player-facing cameo. |
+| Simulation Rule | Keep Lahua protected from ordinary adult systems, combat exploitation, mature venues, and random NPC simulation loops. Use only child-safe story, companion, or event handling. |
+| Gameplay Hook | Animal lover, druidic innocence, nature healing, sprite magic, woodland trust, and soft Fae storylines. |
+| Art Baseline | Approved from the generated Lahua concept: Fae Sprite child in a flower dress with animal companions and gentle green-gold druid aura. |
+
+###### Ieke Updated Barbarian Baseline
+
+| Field | Direction |
+| --- | --- |
+| Name | Ieke |
+| Protected Type | Legendary True / Special Guest Login |
+| Lineage | Full Orc visual baseline for the current special render; earlier Half-Orc legacy notes can remain as old rumor, mixed records, or pre-final lore until the creator finalizes his ancestry. |
+| Visual Read | Adult male full Orc barbarian, massive muscular build, green skin, tusks, heavy brow, battle scars, battle-ready stance, and brutal frontline presence. |
+| Signature Gear | Battle axe loadout for this render; Umbra Pit Broadsword remains his earlier legendary weapon record unless later replaced. |
+| Role Direction | Tribute guest character with legendary barbarian presence, usable in raids, war events, arena appearances, mentor scenes, or special login play. |
+| Simulation Rule | Do not run Ieke through ordinary NPC simulation. If offline, represent him through rumors, legacy boards, echoes, statues, records, or scripted events. |
+| Gameplay Hook | Orc rage, battle scars, axe mastery, intimidation, front-line raid pressure, and legendary barbarian momentum. |
+| Art Baseline | Approved from the generated Ieke concept: full Orc male barbarian with battle scars and a huge battle-worn axe. |
 
 ##### User Weapon Reference Queue
 
@@ -14301,6 +14432,52 @@ Basic respawn and restoration timing:
 These timers represent a mix of natural recovery, NPC work, civic repair, druidic care, rune maintenance, and local magic. The world is not simply resetting for no reason; Huwan has people and magic constantly repairing the damage caused by adventurers, monsters, weather, trade, and ordinary life.
 
 Major story damage can ignore normal timers until repaired by quests, materials, money, labor, guild action, or magic.
+
+#### Settlement Resource Baseline
+
+Every city, town, village, kingdom, and other lasting settlement must begin with enough normal resource access to sustain its simulated population without player involvement under ordinary conditions.
+
+This baseline can come from a mix of:
+
+- Local resource nodes
+- Farms, orchards, herds, ponds, wells, and managed groves
+- NPC labor and civic repair
+- Guild stockpiles and merchant inventories
+- Trade routes, imports, taxes, and kingdom supply networks
+- Local magic, runes, druidic care, and other setting-appropriate restoration
+
+Players are not required to keep a normal settlement alive every day. Player involvement determines the margin and the direction of change:
+
+- Help can turn survival into stability, stability into prosperity, and prosperity into regional power.
+- Neglect during crisis can let monsters, weather, corruption, war, overharvesting, theft, failed trade, or bad leadership push a settlement into shortage.
+- Harmful player action can break supply, damage land, hoard essentials, sabotage routes, or deepen collapse.
+- Strong player action can repair shortages, defend resource zones, open trade, improve yields, build storage, and create new economic strength.
+
+This means resource placement should not be balanced only around player harvesting. Settlement simulation needs its own sustainment budget, reserve stock, NPC production, and supply risk so player actions matter without the population becoming helpless when players are elsewhere.
+
+#### Player-Built Resource Nodes
+
+Players with the right tools, skills, materials, land access, and time can create new resource nodes instead of only harvesting the nodes Huwan begins with.
+
+Player-built nodes should use a construction or cultivation recipe that matches the resource. For example, a player who wants to add a watermelon field needs:
+
+- A valid field or farm plot
+- Hoe access
+- Watermelon seeds
+- Fertilizer
+- Water
+- Enough farming skill and work time to establish the crop
+
+New agricultural nodes begin as player-created work sites. After about `2` in-game days of successful establishment, a valid node becomes self-sufficient enough to join the normal local resource loop.
+
+Once adopted by the local resource loop:
+
+- Farmers and appropriate NPC workers recognize it as another harvestable node.
+- Players may gather from it according to permissions, depletion, and respawn rules.
+- Its yield can improve local stock, market supply, quest availability, food security, and settlement resilience.
+- Neglect, theft, monster damage, bad weather, blight, ownership disputes, or sabotage can still reduce or destroy its value.
+
+This rule lets skilled players expand a settlement's real production. A village with more fields, herb beds, fish ponds, managed groves, quarries, or other valid nodes should become materially stronger over time if those nodes survive and are supported.
 
 ### F Rank Gathering Areas
 
@@ -16548,6 +16725,8 @@ Defense should create ongoing jobs for guards, officers, knights, archers, build
 
 Player settlements need food and materials.
 
+NPC-founded settlements and kingdoms follow the same rule. They should have enough farms, resource zones, stockpiles, labor, and supply routes to support their population in normal times before players intervene. Player land planning then changes resilience, surplus, scarcity, wealth, recovery speed, and crisis outcomes.
+
 Agriculture zones:
 
 - Grain fields
@@ -16576,6 +16755,8 @@ Resource zones:
 - Slime farms
 - Mana crystal trade depots
 - Dungeon processing yards
+
+Players can add to these zones by building or cultivating valid resource nodes. A new field, grove, pond, quarry point, herb bed, or similar node should require the matching tools, skills, inputs, legal access, and establishment time before NPC workers count it as part of settlement production. Agricultural nodes such as a watermelon field normally mature into that shared resource loop after about `2` in-game days when their setup requirements are met.
 
 Overuse can damage the land, reduce yields, anger druids, attract monsters, or create poor-district shortages.
 

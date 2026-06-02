@@ -1,5 +1,38 @@
 Name,SubRaceId,ParentRaceId,DisplayName,Description,ManaWellModifier
+subrace_human_common,race.human.common,race.human,Common Human,Grounded level one all-rounder with worn leather soft cloth and a used short sword,Average
+subrace_human_high,race.human.high,race.human,High-Human,Alabaster smug noble magic user in fine real cloths and controlled spellwork,Deep
+subrace_human_dawn,race.human.dawn,race.human,Dawn Human,Yellow warmed cheerful holy Human with bright sacred garments and a gentle aura,Average
+subrace_human_dusk,race.human.dusk,race.human,Dusk Human,Dark skinned stalwart tank guard with knight armor greatsword kite shield and void aura,Average
+subrace_human_frontier,race.human.frontier,race.human,Frontier Human,Reddish sunburnt farmer ranger with wild predator watchful eyes and rugged work gear,Average
+subrace_human_urban,race.human.urban,race.human,Urban Human,Slightly dirty city merchant with softer build trade clothes ledgers and coin pouches,Average
+subrace_human_warborn,race.human.warborn,race.human,Warborn Human,Dark tanned scarred fierce battle happy Human for barbarians guards and war knights,Low
+subrace_human_half_elf,race.human.half_elf,race.human,Half-Elf,Human-Elf hybrid with short ears sword adventurer charisma and mixed-culture flexibility,Deep
+subrace_human_blessed,race.human.blessed,race.human,Blessed Human,Ebony skin white hair white eyes divine wings deity tattoos and radiant holy aura,Deep
+subrace_human_cursed,race.human.cursed,race.human,Cursed Human,Sickly purple tinted dark tan rogue with black eyes curse tattoos and purple aura,Average
 subrace_elf_dark,race.elf.dark,race.elf,Dark-Elf,Mysterious purple-skinned elf outliers with white hair,Deep
 subrace_elf_high,race.elf.high,race.elf,High-Elf,High-status elf lineage tied to knowledge and political refinement,Deep
-subrace_orc_half,race.orc.half,race.orc,Half-Orc,Mixed orc lineage able to bridge fear respect and outsider identity,Average
+subrace_elf_wood,race.elf.wood,race.elf,Wood Elf,Forest dwelling Elves tied to archery herbs and natural mana,Deep
+subrace_elf_half,race.elf.half,race.elf,Half-Elf,Human-Elf hybrid with short ears sword adventurer charisma and mixed-culture flexibility,Deep
+subrace_dwarf_mountain,race.dwarf.mountain,race.dwarf,Mountain Dwarf,High mountain miners smiths and fortress builders,Average
+subrace_dwarf_forge,race.dwarf.forge,race.dwarf,Forge Dwarf,Fire metal furnace and smithing focused Dwarves with soot worn gear and heat discipline,Deep
+subrace_dwarf_quarry,race.dwarf.quarry,race.dwarf,Quarry Dwarf,Stonecutters masons road builders and civic construction masters,Average
+subrace_dwarf_deep,race.dwarf.deep,race.dwarf,Deep Dwarf,Underground Dwarves adapted to caverns dark tunnels pressure and sealed ruins,Deep
+subrace_dwarf_goldbeard,race.dwarf.goldbeard,race.dwarf,Goldbeard Dwarf,Wealth trade appraisal contracts banking and high value gear culture,Average
+subrace_dwarf_iron_oath,race.dwarf.iron_oath,race.dwarf,Iron Oath Dwarf,Duty bound contract sacred Dwarves with disciplined labor defense and oath gear,Average
+subrace_dwarf_dreamforge,race.dwarf.dreamforge,race.dwarf,Dreamforge Dwarf,Ione touched crafters who dream unusual blueprints before building them,Deep
+subrace_dwarf_hearth,race.dwarf.hearth,race.dwarf,Hearth Dwarf,Domestic tavern food comfort brewing and community focused Dwarves,Average
+subrace_orc_common,race.orc.common,race.orc,Common Orc,Classic green clanned Orc with tusks ugly brutish face tall build and battle-ready presence,Low
+subrace_orc_half,race.orc.half,race.orc,Half-Orc,Half-Human Orc branch with green skin smaller tusks shorter leaner build and more Human attractive features,Average
+subrace_orc_war,race.orc.war,race.orc,War Orc,Brown red battle Orcs with dense chiseled muscle ugly faces and mandatory war paint,Average
+subrace_orc_stonehide,race.orc.stonehide,race.orc,Stonehide Orc,Stone colored Orcs with rocky hide protrusions metal armor and fortress-like defensive presence,Low
+subrace_orc_redtusk,race.orc.redtusk,race.orc,Redtusk Orc,Blood red aggressive Orcs with bloodshot eyes red tusks and constant fight-ready posture,Low
+subrace_orc_gray,race.orc.gray,race.orc,Gray Orc,Gray skinned intelligent neutral studious Orcs with calm passive body language,Average
+subrace_orc_ironbound,race.orc.ironbound,race.orc,Ironbound Orc,Pink pig-like hard labor Orcs with ironbound history restraints work gear and resilient dignity,Average
+subrace_orc_wild,race.orc.wild,race.orc,Wild Orc,Very short green cartoonish ambush Orcs with armored helmets small axes and tall-grass hiding habits,Low
+subrace_demon_common,race.demon.common,race.demon,Common Demon,Baseline Demon citizen with horns claws and deep mana,VeryDeep
+subrace_demon_peacebound,race.demon.peacebound,race.demon,Peacebound Demon,Reformist Demon lineage seeking coexistence through control and restraint,Deep
+subrace_beastfolk_rabbitoid,race.beastfolk.rabbitoid,race.beastfolk,Rabbitoid,Rabbit lineage Beastfolk known for speed hearing and jumping,Average
 subrace_beastfolk_panthera,race.beastfolk.panthera,race.beastfolk,Panthera,Panther-like beastfolk known for stealth senses and grace,Average
+subrace_fae_fairy,race.fae.fairy,race.fae,Fairy,Small winged Fae tied to flight mischief flowers and glamours,Deep
+subrace_fae_arch_fae,race.fae.arch_fae,race.fae,Arch Fae,High Fae with old pact power strange authority and powerful glamours,VeryDeep
+subrace_fae_faun,race.fae.faun,race.fae,Faun,Goat or deer like Fae tied to music revelry forests and instinct,Deep

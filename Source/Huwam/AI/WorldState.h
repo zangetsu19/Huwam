@@ -77,13 +77,25 @@ enum class ENPCSubRace : uint8
     DarkElf,
     // Dwarf sub-races
     MountainDwarf,
-    HillDwarf,
+    ForgeDwarf,
+    QuarryDwarf,
+    DeepDwarf,
+    GoldbeardDwarf,
+    IronOathDwarf,
+    DreamforgeDwarf,
+    HearthDwarf,
     // Halfling sub-races
     Lightfoot,
     Stout,
     // Orc sub-races
     CommonOrc,
     HalfOrc,
+    WarOrc,
+    StonehideOrc,
+    RedtuskOrc,
+    GrayOrc,
+    IronboundOrc,
+    WildOrc,
     // Ogre sub-races
     HillOgre,
     SwampOgre,
@@ -176,7 +188,8 @@ enum class ESkillType : uint8
     Diplomacy,
     Survival,
     Trade,
-    Leadership
+    Leadership,
+    Knowledge
 };
 
 struct FInventoryItem

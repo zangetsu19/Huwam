@@ -39,12 +39,17 @@ namespace
 
     FString GetPrimaryRaceId(const FString& RaceId)
     {
-        if (RaceId == TEXT("race.elf.dark") || RaceId == TEXT("race.elf.high") || RaceId == TEXT("race.elf.wood"))
+        if (RaceId.StartsWith(TEXT("race.elf.")))
         {
             return TEXT("race.elf");
         }
 
-        if (RaceId == TEXT("race.orc.half"))
+        if (RaceId.StartsWith(TEXT("race.dwarf.")))
+        {
+            return TEXT("race.dwarf");
+        }
+
+        if (RaceId.StartsWith(TEXT("race.orc.")))
         {
             return TEXT("race.orc");
         }
@@ -74,6 +79,7 @@ FHuwamCharacterCreationRequest UHuwamCharacterCreationComponent::BuildDefaultCha
     Request.CharacterName = FText::FromString(TEXT("New Huwam Hero"));
     Request.CreationPath = EHuwamCharacterCreationPath::Normal;
     Request.RaceId = TEXT("race.human");
+    Request.SubRaceId = TEXT("race.human.common");
     Request.ClassIds = { TEXT("class.progression_zero") };
     Request.JobIds = { TEXT("job.adventurer") };
     Request.SkillIds = {
@@ -534,7 +540,64 @@ void UHuwamCharacterCreationComponent::AddRaceStatBonuses(const FString& RaceId,
 
 void UHuwamCharacterCreationComponent::AddSubRaceStatBonuses(const FString& SubRaceId, TMap<FString, int32>& OutBonuses) const
 {
-    if (SubRaceId == TEXT("race.elf.dark"))
+    if (SubRaceId == TEXT("race.human.high"))
+    {
+        AddStatBonus(OutBonuses, StatCharisma, 2);
+        AddStatBonus(OutBonuses, StatIntelligence, 1);
+        AddStatBonus(OutBonuses, StatMana, 1);
+    }
+    else if (SubRaceId == TEXT("race.human.dawn"))
+    {
+        AddStatBonus(OutBonuses, StatWisdom, 2);
+        AddStatBonus(OutBonuses, StatMana, 1);
+        AddStatBonus(OutBonuses, StatCharisma, 1);
+    }
+    else if (SubRaceId == TEXT("race.human.dusk"))
+    {
+        AddStatBonus(OutBonuses, StatDefense, 2);
+        AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+    }
+    else if (SubRaceId == TEXT("race.human.frontier"))
+    {
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatHealth, 1);
+        AddStatBonus(OutBonuses, StatLuck, 1);
+    }
+    else if (SubRaceId == TEXT("race.human.urban"))
+    {
+        AddStatBonus(OutBonuses, StatCharisma, 2);
+        AddStatBonus(OutBonuses, StatLuck, 1);
+        AddStatBonus(OutBonuses, StatIntelligence, 1);
+    }
+    else if (SubRaceId == TEXT("race.human.warborn"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 2);
+        AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatHealth, 1);
+        AddStatBonus(OutBonuses, StatIntelligence, -1);
+    }
+    else if (SubRaceId == TEXT("race.human.blessed"))
+    {
+        AddStatBonus(OutBonuses, StatMana, 2);
+        AddStatBonus(OutBonuses, StatWisdom, 2);
+        AddStatBonus(OutBonuses, StatWorldPopularity, 1);
+    }
+    else if (SubRaceId == TEXT("race.human.cursed"))
+    {
+        AddStatBonus(OutBonuses, StatDexterity, 2);
+        AddStatBonus(OutBonuses, StatLuck, 1);
+        AddStatBonus(OutBonuses, StatMana, 1);
+        AddStatBonus(OutBonuses, StatCharisma, -1);
+    }
+    else if (SubRaceId == TEXT("race.human.half_elf") || SubRaceId == TEXT("race.elf.half"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatCharisma, 1);
+    }
+    else if (SubRaceId == TEXT("race.elf.dark"))
     {
         AddStatBonus(OutBonuses, StatDexterity, 1);
         AddStatBonus(OutBonuses, StatIntelligence, 1);
@@ -546,10 +609,96 @@ void UHuwamCharacterCreationComponent::AddSubRaceStatBonuses(const FString& SubR
         AddStatBonus(OutBonuses, StatIntelligence, 2);
         AddStatBonus(OutBonuses, StatCharisma, 1);
     }
+    else if (SubRaceId == TEXT("race.dwarf.mountain"))
+    {
+        AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+    }
+    else if (SubRaceId == TEXT("race.dwarf.forge"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatMana, 1);
+    }
+    else if (SubRaceId == TEXT("race.dwarf.quarry"))
+    {
+        AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatCharisma, 1);
+    }
+    else if (SubRaceId == TEXT("race.dwarf.deep"))
+    {
+        AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+    }
+    else if (SubRaceId == TEXT("race.dwarf.goldbeard"))
+    {
+        AddStatBonus(OutBonuses, StatCharisma, 2);
+        AddStatBonus(OutBonuses, StatLuck, 1);
+    }
+    else if (SubRaceId == TEXT("race.dwarf.iron_oath"))
+    {
+        AddStatBonus(OutBonuses, StatDefense, 2);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+    }
+    else if (SubRaceId == TEXT("race.dwarf.dreamforge"))
+    {
+        AddStatBonus(OutBonuses, StatMana, 2);
+        AddStatBonus(OutBonuses, StatIntelligence, 1);
+    }
+    else if (SubRaceId == TEXT("race.dwarf.hearth"))
+    {
+        AddStatBonus(OutBonuses, StatCharisma, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+        AddStatBonus(OutBonuses, StatLuck, 1);
+    }
+    else if (SubRaceId == TEXT("race.orc.common"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatHealth, 1);
+        AddStatBonus(OutBonuses, StatIntelligence, -1);
+    }
     else if (SubRaceId == TEXT("race.orc.half"))
     {
         AddStatBonus(OutBonuses, StatStrength, 2);
         AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatCharisma, 1);
+    }
+    else if (SubRaceId == TEXT("race.orc.war"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 2);
+        AddStatBonus(OutBonuses, StatHealth, 1);
+        AddStatBonus(OutBonuses, StatIntelligence, -1);
+    }
+    else if (SubRaceId == TEXT("race.orc.stonehide"))
+    {
+        AddStatBonus(OutBonuses, StatDefense, 3);
+        AddStatBonus(OutBonuses, StatDexterity, -1);
+    }
+    else if (SubRaceId == TEXT("race.orc.redtusk"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 2);
+        AddStatBonus(OutBonuses, StatHealth, 1);
+        AddStatBonus(OutBonuses, StatCharisma, -1);
+    }
+    else if (SubRaceId == TEXT("race.orc.gray"))
+    {
+        AddStatBonus(OutBonuses, StatIntelligence, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 2);
+    }
+    else if (SubRaceId == TEXT("race.orc.ironbound"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+    }
+    else if (SubRaceId == TEXT("race.orc.wild"))
+    {
+        AddStatBonus(OutBonuses, StatDexterity, 2);
+        AddStatBonus(OutBonuses, StatLuck, 1);
         AddStatBonus(OutBonuses, StatIntelligence, -1);
     }
     else if (SubRaceId == TEXT("race.beastfolk.panthera"))
@@ -602,11 +751,23 @@ void UHuwamCharacterCreationComponent::AddClassStatBonuses(const FString& ClassI
         AddStatBonus(OutBonuses, StatDexterity, 2);
         AddStatBonus(OutBonuses, StatLuck, 1);
     }
+    else if (ClassId == TEXT("class.adventurer_rank_f"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatLuck, 1);
+    }
 }
 
 void UHuwamCharacterCreationComponent::AddJobStatBonuses(const FString& JobId, TMap<FString, int32>& OutBonuses) const
 {
-    if (JobId == TEXT("job.adventurer"))
+    if (JobId == TEXT("job.builder"))
+    {
+        AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatDefense, 1);
+    }
+    else if (JobId == TEXT("job.adventurer"))
     {
         AddStatBonus(OutBonuses, StatStrength, 1);
         AddStatBonus(OutBonuses, StatDexterity, 1);
@@ -629,10 +790,39 @@ void UHuwamCharacterCreationComponent::AddJobStatBonuses(const FString& JobId, T
         AddStatBonus(OutBonuses, StatCharisma, 2);
         AddStatBonus(OutBonuses, StatLuck, 1);
     }
+    else if (JobId == TEXT("job.officer"))
+    {
+        AddStatBonus(OutBonuses, StatCharisma, 1);
+        AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+    }
+    else if (JobId == TEXT("job.tavern_owner"))
+    {
+        AddStatBonus(OutBonuses, StatCharisma, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+        AddStatBonus(OutBonuses, StatLuck, 1);
+    }
     else if (JobId == TEXT("job.farmer"))
     {
         AddStatBonus(OutBonuses, StatHealth, 1);
         AddStatBonus(OutBonuses, StatStrength, 1);
+        AddStatBonus(OutBonuses, StatWisdom, 1);
+    }
+    else if (JobId == TEXT("job.fencer"))
+    {
+        AddStatBonus(OutBonuses, StatDexterity, 2);
+        AddStatBonus(OutBonuses, StatCharisma, 1);
+    }
+    else if (JobId == TEXT("job.dungeon_explorer"))
+    {
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatDefense, 1);
+        AddStatBonus(OutBonuses, StatLuck, 1);
+    }
+    else if (JobId == TEXT("job.craftsman"))
+    {
+        AddStatBonus(OutBonuses, StatDexterity, 1);
+        AddStatBonus(OutBonuses, StatIntelligence, 1);
         AddStatBonus(OutBonuses, StatWisdom, 1);
     }
     else if (JobId == TEXT("job.baker"))
@@ -796,16 +986,19 @@ bool UHuwamCharacterCreationComponent::GetSubRaceRowById(const FString& SubRaceI
 
     if (const UHuwamDataSubsystem* DataSubsystem = GetDataSubsystem())
     {
-        if (DataSubsystem->GetSubRaceRow(GetRowNameFromId(SubRaceId), OutRow))
+        if (SubRaceId.StartsWith(TEXT("race.")))
         {
-            return true;
+            FString SubRaceRowName = SubRaceId;
+            SubRaceRowName.RemoveFromStart(TEXT("race."));
+            SubRaceRowName.ReplaceInline(TEXT("."), TEXT("_"));
+            SubRaceRowName = FString::Printf(TEXT("subrace_%s"), *SubRaceRowName);
+            if (DataSubsystem->GetSubRaceRow(FName(*SubRaceRowName), OutRow))
+            {
+                return true;
+            }
         }
 
-        FString SubRaceRowName = SubRaceId;
-        SubRaceRowName.RemoveFromStart(TEXT("race."));
-        SubRaceRowName.ReplaceInline(TEXT("."), TEXT("_"));
-        SubRaceRowName = FString::Printf(TEXT("subrace_%s"), *SubRaceRowName);
-        return DataSubsystem->GetSubRaceRow(FName(*SubRaceRowName), OutRow);
+        return DataSubsystem->GetSubRaceRow(GetRowNameFromId(SubRaceId), OutRow);
     }
 
     return false;
