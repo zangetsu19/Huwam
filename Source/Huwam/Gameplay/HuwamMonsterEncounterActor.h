@@ -9,6 +9,7 @@
 class UHuwamCharacterStatsComponent;
 class UHuwamInventoryComponent;
 class USceneComponent;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
 class HUWAM_API AHuwamMonsterEncounterActor : public AActor
@@ -30,7 +31,7 @@ public:
     bool ReceiveAttackFrom(UHuwamCombatComponent* Attacker, EHuwamCombatAttackType AttackType, const FHuwamCombatRollConfig& RollConfig, FHuwamCombatResult& OutResult);
 
     UFUNCTION(BlueprintCallable, Category = "Huwam|Monster")
-    bool GrantDefeatRewards(UHuwamInventoryComponent* RecipientInventory, TArray<FHuwamIdQuantity>& OutRewardItems, int32& OutGoldReward, int32& OutExperienceReward);
+    bool GrantDefeatRewards(UHuwamInventoryComponent* RecipientInventory, TArray<FHuwamIdQuantity>& OutRewardItems, int64& OutCurrencyCopperReward, int32& OutExperienceReward);
 
     UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Monster")
     bool IsDefeated() const;
@@ -50,6 +51,9 @@ public:
 protected:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Huwam|Monster")
     TObjectPtr<USceneComponent> SceneRoot;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Huwam|Monster")
+    TObjectPtr<UStaticMeshComponent> MonsterMesh;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Huwam|Monster")
     TObjectPtr<UHuwamCharacterStatsComponent> CharacterStats;
@@ -82,7 +86,7 @@ protected:
     TArray<FHuwamIdQuantity> RewardItems;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Huwam|Monster")
-    int32 GoldReward = 0;
+    int64 CurrencyRewardCopper = 0;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Huwam|Monster")
     int32 ExperienceReward = 0;
@@ -95,4 +99,5 @@ private:
     void ApplyBasicSlimeFallback();
     bool LoadMonsterRow(FHuwamMonsterRow& OutMonsterRow) const;
     void SetMonsterStats(int32 Strength, int32 Dexterity, int32 Health, int32 Mana, int32 Defense, int32 Luck);
+    void RefreshDefeatVisualState();
 };

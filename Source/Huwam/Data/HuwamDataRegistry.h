@@ -103,4 +103,17 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "Huwam|Data")
     TArray<FName> GetRowNames(const UDataTable* Table) const;
+
+    UFUNCTION(BlueprintCallable, Category = "Huwam|Data")
+    bool LoadMissingTablesFromProjectCsv();
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Data")
+    int32 GetTotalKnownRowCount() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Data")
+    FString GetLastCsvBootstrapSummary() const;
+
+private:
+    UPROPERTY(Transient)
+    FString LastCsvBootstrapSummary;
 };

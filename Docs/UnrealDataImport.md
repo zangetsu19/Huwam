@@ -2,9 +2,14 @@
 
 ## Purpose
 
-This guide explains how to turn the starter CSV files in `Content/Data` into Unreal DataTable assets and connect them to the Huwan data registry.
+This guide explains how the starter CSV files in `Content/Data` become Unreal data for gameplay systems.
 
-This step must happen inside Unreal Editor because `.uasset` files are created by the editor import pipeline.
+The project now supports two paths:
+
+- Runtime bootstrap for prototypes: `UHuwamDataSubsystem` creates a transient `UHuwamDataRegistry` and loads missing DataTables directly from `Content/Data/*.csv`.
+- Authored asset path for production: imported `.uasset` DataTables can still be assigned to a `DA_HuwamDataRegistry` asset when the content team wants editor-managed tables.
+
+If no registry asset is configured, the runtime bootstrap path is used automatically.
 
 ## Import Order
 
@@ -54,7 +59,7 @@ Recommended destination:
 
 ## Create The Registry Asset
 
-After importing the tables:
+This is now optional for the prototype, but still recommended later for production content workflows. After importing the tables:
 
 1. Create a new Data Asset.
 2. Choose `HuwamDataRegistry`.
@@ -71,13 +76,14 @@ The code now includes:
 - `UHuwamDataRegistry`
 - `UHuwamDataSubsystem`
 
-The subsystem can hold the active registry and expose row lookups to C++ and Blueprints.
+The subsystem can hold the active registry, expose row lookups to C++ and Blueprints, and auto-load missing tables from `Content/Data`.
 
-Early prototype flow:
+Current prototype flow:
 
 1. Get the Game Instance subsystem `HuwamDataSubsystem`.
-2. Set `DA_HuwamDataRegistry` as the active registry.
-3. Ask the subsystem for rows such as:
+2. Call `EnsureDataRegistryLoaded` if you need to force the bootstrap.
+3. Optionally set `DA_HuwamDataRegistry` as the active registry if authored assets exist.
+4. Ask the subsystem for rows such as:
    - Race row
    - Content pack row
    - Class row
@@ -96,6 +102,8 @@ After import, test these rows first:
 |---|---|
 | `DT_ContentPacks` | `content_pack_starter_core` |
 | `DT_Races` | `race_human` |
+| `DT_SubRaces` | `subrace_dwarf_dreamforge` |
+| `DT_SubRaces` | `subrace_orc_redtusk` |
 | `DT_Classes` | `class_progression_zero` |
 | `DT_Items` | `item_weapon_basic_sword` |
 | `DT_Spells` | `spell_fire_spark` |
@@ -105,12 +113,15 @@ After import, test these rows first:
 
 If these load, the first Huwan data bridge is alive.
 
+The editor validation runner now checks these rows before it plays through the tutorial and Eldoria starter field loop.
+
 ## Common Import Issues
 
 - If Unreal cannot find a row struct, compile the project first.
 - If enum fields fail, confirm the CSV value matches the enum entry name, such as `Common`, `Deep`, `F`, `Fire`, or `Evocation`.
 - If a row field imports blank, check the CSV column name against the C++ property name.
-- If array fields are needed later, add them after the first simple table imports are stable.
+- Omitted optional columns use C++ default values during runtime bootstrap.
+- If array fields are needed later, add the matching CSV columns after the first simple table imports are stable.
 - If a table imports but lookups fail, confirm the row name in the first CSV column matches the requested row name.
 
 ## Next Code Step
@@ -127,5 +138,7 @@ That smoke test actor now exists:
 - `Source/Huwam/Data/HuwamDataSmokeTestActor.cpp`
 
 Use it by placing `HuwamDataSmokeTestActor` in a test map and assigning `DA_HuwamDataRegistry` to its `DataRegistry` field. When the map starts, the actor will try to load known starter rows and write the results to the Unreal log.
+
+If no registry is assigned, the smoke test actor now uses the active runtime registry from `UHuwamDataSubsystem`.
 
 That will prove the pipeline from world bible to CSV to Unreal data to gameplay code.

@@ -1,8 +1,9 @@
 Name,RaceId,DisplayName,Description,GeneralRole,CommonReputation,ClosestDeityId,ContinentId,KingdomId,Rarity,ManaWellBaseline
 race_human,race.human,Human,Versatile people of Nanira,Authority and all-rounder civilization,Respected and very common,deity.pharmos,continent.nanira,kingdom.nuwen,Common,Average
 race_elf,race.elf,Elf,Long-lived knowledge experts,Scholars and forest-linked magic culture,Loved and respected,deity.etta,continent.aulend,kingdom.xuidal,Common,Deep
-race_elf_dark,race.elf.dark,Dark-Elf,Mysterious elf outliers,Stealth knowledge and introverted mystery,Respected but watched,deity.etta,continent.aulend,kingdom.xuidal,Uncommon,Deep
+race_dwarf,race.dwarf,Dwarf,Bearded builders and master crafters,Hard labor craftwork and fortification,Respected and common,deity.ione,continent.egand,kingdom.wortor,Common,Average
 race_orc,race.orc,Orc,Scary tough race of guards and bounty hunters,Police guards escorts and hard fighters,Feared and respected,deity.ixnir,continent.ifai,kingdom.tozraca,Common,Average
-race_halfling,race.halfling,Halfling,Small clever folk with quick tongues,Social survival trade and nimble work,Commonly underestimated,deity.ione,continent.aurelith,kingdom.none,Uncommon,Average
 race_demon,race.demon,Demon,Misunderstood race feared by bedtime stories,Discriminated citizens and feared magical lineages,Hated and feared,deity.udum,continent.eabus,kingdom.shoura,Uncommon,VeryDeep
 race_beastfolk,race.beastfolk,Beastfolk,Animal-featured people often exploited by society,Servants workers tamers hunters and survivors,Seen unfairly as property,deity.kroxona,continent.emea,kingdom.khalia,Uncommon,Average
+race_fae,race.fae,Fae,Dreamlike people who reject normality,Whimsical strange natural and pact-bound lives,Rare and poorly understood,deity.kroxona,continent.drizis,kingdom.vuntis,Rare,Deep
+race_halfling,race.halfling,Halfling,Small clever folk with quick tongues,Social survival trade and nimble work,Commonly underestimated,deity.ione,continent.aurelith,kingdom.none,Uncommon,Average

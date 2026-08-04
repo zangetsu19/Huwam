@@ -1,18 +1,44 @@
 #include "Data/HuwamDataSubsystem.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogHuwamDataSubsystem, Log, All);
+
 void UHuwamDataSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
     Super::Initialize(Collection);
 
-    if (!DefaultDataRegistry.IsNull())
+    EnsureDataRegistryLoaded();
+}
+
+bool UHuwamDataSubsystem::EnsureDataRegistryLoaded()
+{
+    if (!ActiveDataRegistry && !DefaultDataRegistry.IsNull())
     {
         ActiveDataRegistry = DefaultDataRegistry.LoadSynchronous();
     }
+
+    if (!ActiveDataRegistry)
+    {
+        ActiveDataRegistry = NewObject<UHuwamDataRegistry>(this, TEXT("RuntimeCsvHuwamDataRegistry"));
+    }
+
+    if (!ActiveDataRegistry)
+    {
+        UE_LOG(LogHuwamDataSubsystem, Warning, TEXT("Huwam data subsystem could not create an active data registry."));
+        return false;
+    }
+
+    const bool bLoaded = ActiveDataRegistry->LoadMissingTablesFromProjectCsv();
+    UE_LOG(LogHuwamDataSubsystem, Display, TEXT("%s"), *ActiveDataRegistry->GetLastCsvBootstrapSummary().Replace(TEXT("\r"), TEXT(" ")).Replace(TEXT("\n"), TEXT(" | ")));
+    return bLoaded;
 }
 
 void UHuwamDataSubsystem::SetDataRegistry(UHuwamDataRegistry* InDataRegistry)
 {
     ActiveDataRegistry = InDataRegistry;
+    if (ActiveDataRegistry)
+    {
+        ActiveDataRegistry->LoadMissingTablesFromProjectCsv();
+    }
 }
 
 UHuwamDataRegistry* UHuwamDataSubsystem::GetDataRegistry() const
@@ -23,6 +49,11 @@ UHuwamDataRegistry* UHuwamDataSubsystem::GetDataRegistry() const
 bool UHuwamDataSubsystem::HasDataRegistry() const
 {
     return ActiveDataRegistry != nullptr;
+}
+
+FString UHuwamDataSubsystem::GetDataBootstrapSummary() const
+{
+    return ActiveDataRegistry ? ActiveDataRegistry->GetLastCsvBootstrapSummary() : FString();
 }
 
 bool UHuwamDataSubsystem::GetContentPackRow(FName RowName, FHuwamContentPackRow& OutRow) const

@@ -132,6 +132,9 @@ public:
     int32 RestoreMana(int32 Amount, UHuwamCharacterStatsComponent* Stats = nullptr, UHuwamEquipmentComponent* Equipment = nullptr);
 
     UFUNCTION(BlueprintCallable, Category = "Huwam|Combat")
+    void RestoreMetersForPrototypeSave(int32 SavedHealth, int32 SavedMana);
+
+    UFUNCTION(BlueprintCallable, Category = "Huwam|Combat")
     bool ApplyResolvedDamage(const FHuwamCombatResult& InResult, FHuwamCombatResult& OutAppliedResult);
 
     UFUNCTION(BlueprintCallable, Category = "Huwam|Combat")

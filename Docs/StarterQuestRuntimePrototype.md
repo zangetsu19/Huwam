@@ -16,6 +16,16 @@ The first quest loop should work like this:
 
 `UHuwamQuestComponent` handles the quest state.
 
+It also now has a fallback start path for the first tutorial quest:
+
+- `quest.tutorial.progression_zero`
+- `StartProgressionZeroTutorialQuest`
+
+It also now has a fallback start path for the first gathering quest:
+
+- `quest.eldoria.gather_field_supplies`
+- `StartGatherFieldSuppliesQuest`
+
 ## Data Shape
 
 `DT_Quests.csv` now has first-pass objective fields:
@@ -26,7 +36,8 @@ The first quest loop should work like this:
 | PrimaryObjectiveDescription | Text for HUD/menu display. |
 | PrimaryObjectiveTargetValue | Completion target. |
 | PrimaryObjectiveProgressSourceId | What source advances the objective. |
-| RewardGold | Gold paid at turn-in. |
+| bRepeatable | Whether a turned-in quest can be offered again when the world condition returns. |
+| RewardCopper | Copper-native currency paid at turn-in. |
 | RewardExperience | Experience paid at turn-in. |
 
 ## Slimes In The Tall Grass
@@ -38,7 +49,7 @@ The first quest loop should work like this:
 | Objective | Defeat or harvest 3 basic slimes. |
 | Target | 3 |
 | Progress Source | `monster.slime.basic` |
-| Turn-in Gold | 15 |
+| Turn-in Copper | 15 |
 | Turn-in Experience | 10 |
 
 ## Runtime State
@@ -50,13 +61,21 @@ The first quest loop should work like this:
 - Description.
 - Quest type.
 - Urgency.
+- Repeatable flag.
 - Quest giver.
 - Primary objective state.
+- Need request context for NPC-driven quest explanations when present.
 - Reward items.
-- Reward gold.
+- Reward currency.
 - Reward experience.
 - World state effect.
 - Active, ready-to-turn-in, and turned-in flags.
+
+The quest component now also stores one tracked active quest ID so HUD and map systems can agree on the current focus.
+
+`FHuwamQuestOffer` previews authored quest content before a quest becomes active. The first NPC supply offer uses that preview to explain a field-supplies request before the player accepts it.
+
+Repeatable quests can restart after turn-in. When a repeatable quest starts again, the quest component removes the old turned-in blocker and resets the matching reward-progress record so the player has to complete the objective again instead of instantly cashing in old progress.
 
 ## Blueprint Flow
 
@@ -76,7 +95,7 @@ For the first slime quest:
 
 Expected totals after three Basic Slimes and quest turn-in:
 
-| Source | Gold | Experience |
+| Source | Copper | Experience |
 |---|---:|---:|
 | Monster rewards | 9 | 15 |
 | Quest turn-in | 15 | 10 |
@@ -92,7 +111,35 @@ The first HUD/menu data adapter is now started:
 - Objective text.
 - Current and target progress.
 - Ready-to-turn-in indicator.
-- Gold and XP readouts.
+- Currency and XP readouts.
 - Health and mana readouts from combat.
 
 See `Docs/HudMenuDataPrototype.md`.
+
+## Tutorial Quest Step
+
+The first Laucian white-lab handoff can start `Welcome to Progression Zero` even before imported quest DataTables are linked.
+
+Quest tracking for that tutorial path is now started too:
+
+- `TrackQuest`
+- `GetTrackedQuestId`
+- `Docs/TutorialLabQuestPrototype.md`
+
+See:
+
+- `Docs/TutorialLabHandoffPrototype.md`
+
+## Field Gathering Step
+
+The first reusable field resource node can now advance active gather objectives by progress source.
+
+`AHuwamGatheringResourceActor` defaults to `material.field_supply`, and `AHuwamPrototypePlayerActor` can now start the existing `Gather Field Supplies` quest through a low-stock `UHuwamNpcSupplyComponent`. Its turn-in path passes accepted gathered materials into that supply component before the currency and experience reward resolves.
+
+See:
+
+- `Docs/GatheringResourcePrototype.md`
+- `Docs/GatherFieldSuppliesQuestPrototype.md`
+- `Docs/NpcSupplyDeliveryPrototype.md`
+- `Docs/NpcSupplyShortageGatePrototype.md`
+- `Docs/NpcSupplyTradeUsePrototype.md`

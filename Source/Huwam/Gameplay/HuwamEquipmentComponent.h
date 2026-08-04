@@ -105,6 +105,9 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Huwam|Equipment")
     void ResetToDefaultSlots();
 
+    UFUNCTION(BlueprintCallable, Category = "Huwam|Equipment")
+    bool RestoreEquipmentSlotsForPrototypeSave(const TArray<FHuwamEquipmentSlotState>& SavedSlots);
+
 protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Huwam|Equipment")
     TArray<FHuwamEquipmentSlotState> EquipmentSlots;

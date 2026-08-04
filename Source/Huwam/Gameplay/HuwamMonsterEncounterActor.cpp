@@ -1,14 +1,18 @@
 #include "Gameplay/HuwamMonsterEncounterActor.h"
 
 #include "Components/SceneComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Data/HuwamDataSubsystem.h"
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
 #include "Gameplay/HuwamCharacterStatsComponent.h"
 #include "Gameplay/HuwamInventoryComponent.h"
+#include "UObject/ConstructorHelpers.h"
 
 namespace
 {
+    constexpr int64 CopperPerGold = 1000000;
+
     const TCHAR* StatStrength = TEXT("stat.strength");
     const TCHAR* StatCharisma = TEXT("stat.charisma");
     const TCHAR* StatIntelligence = TEXT("stat.intelligence");
@@ -32,6 +36,16 @@ AHuwamMonsterEncounterActor::AHuwamMonsterEncounterActor()
 
     SceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneRoot"));
     SetRootComponent(SceneRoot);
+
+    MonsterMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MonsterMesh"));
+    MonsterMesh->SetupAttachment(SceneRoot);
+    MonsterMesh->SetRelativeScale3D(FVector(0.55f));
+
+    static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereMesh(TEXT("/Engine/BasicShapes/Sphere.Sphere"));
+    if (SphereMesh.Succeeded())
+    {
+        MonsterMesh->SetStaticMesh(SphereMesh.Object);
+    }
 
     CharacterStats = CreateDefaultSubobject<UHuwamCharacterStatsComponent>(TEXT("CharacterStats"));
     Combat = CreateDefaultSubobject<UHuwamCombatComponent>(TEXT("Combat"));
@@ -85,13 +99,15 @@ bool AHuwamMonsterEncounterActor::ReceiveAttackFrom(UHuwamCombatComponent* Attac
         return false;
     }
 
-    return Attacker->AttackTarget(Combat, AttackType, RollConfig, OutResult);
+    const bool bAttacked = Attacker->AttackTarget(Combat, AttackType, RollConfig, OutResult);
+    RefreshDefeatVisualState();
+    return bAttacked;
 }
 
-bool AHuwamMonsterEncounterActor::GrantDefeatRewards(UHuwamInventoryComponent* RecipientInventory, TArray<FHuwamIdQuantity>& OutRewardItems, int32& OutGoldReward, int32& OutExperienceReward)
+bool AHuwamMonsterEncounterActor::GrantDefeatRewards(UHuwamInventoryComponent* RecipientInventory, TArray<FHuwamIdQuantity>& OutRewardItems, int64& OutCurrencyCopperReward, int32& OutExperienceReward)
 {
     OutRewardItems = RewardItems;
-    OutGoldReward = GoldReward;
+    OutCurrencyCopperReward = CurrencyRewardCopper;
     OutExperienceReward = ExperienceReward;
 
     if (!Combat || !Combat->IsDefeated() || bRewardsClaimed)
@@ -157,7 +173,9 @@ bool AHuwamMonsterEncounterActor::ApplyMonsterRow(const FHuwamMonsterRow& Monste
     Rank = MonsterRow.Rank;
     bTamable = MonsterRow.bTamable;
     bEdible = MonsterRow.bEdible;
-    GoldReward = MonsterRow.GoldReward;
+    CurrencyRewardCopper = MonsterRow.CurrencyRewardCopper > 0
+        ? MonsterRow.CurrencyRewardCopper
+        : static_cast<int64>(MonsterRow.GoldReward) * CopperPerGold;
     ExperienceReward = MonsterRow.ExperienceReward;
     bRewardsClaimed = false;
 
@@ -184,6 +202,7 @@ bool AHuwamMonsterEncounterActor::ApplyMonsterRow(const FHuwamMonsterRow& Monste
         Combat->InitializeFromStats(CharacterStats, nullptr, true);
     }
 
+    RefreshDefeatVisualState();
     return true;
 }
 
@@ -194,7 +213,7 @@ void AHuwamMonsterEncounterActor::ApplyBasicSlimeFallback()
     Rank = EHuwamRank::F;
     bTamable = true;
     bEdible = false;
-    GoldReward = 3;
+    CurrencyRewardCopper = 3;
     ExperienceReward = 5;
     bRewardsClaimed = false;
 
@@ -210,6 +229,8 @@ void AHuwamMonsterEncounterActor::ApplyBasicSlimeFallback()
     {
         Combat->InitializeFromStats(CharacterStats, nullptr, true);
     }
+
+    RefreshDefeatVisualState();
 }
 
 bool AHuwamMonsterEncounterActor::LoadMonsterRow(FHuwamMonsterRow& OutMonsterRow) const
@@ -251,4 +272,21 @@ void AHuwamMonsterEncounterActor::SetMonsterStats(int32 Strength, int32 Dexterit
     CharacterStats->SetBaseStat(StatMana, Mana);
     CharacterStats->SetBaseStat(StatDefense, Defense);
     CharacterStats->SetBaseStat(StatWorldPopularity, 0);
+}
+
+void AHuwamMonsterEncounterActor::RefreshDefeatVisualState()
+{
+    const bool bDefeated = IsDefeated();
+    if (MonsterMesh)
+    {
+        const float HealthPercent = Combat
+            ? static_cast<float>(Combat->GetCurrentHealth()) / static_cast<float>(FMath::Max(1, Combat->GetMaximumHealth(CharacterStats, nullptr)))
+            : 1.0f;
+        const float WoundScale = FMath::Lerp(0.38f, 0.55f, FMath::Clamp(HealthPercent, 0.0f, 1.0f));
+        MonsterMesh->SetRelativeScale3D(FVector(WoundScale));
+        MonsterMesh->SetVisibility(!bDefeated, true);
+        MonsterMesh->SetCollisionEnabled(bDefeated ? ECollisionEnabled::NoCollision : ECollisionEnabled::QueryAndPhysics);
+    }
+
+    SetActorEnableCollision(!bDefeated);
 }

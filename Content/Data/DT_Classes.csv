@@ -1,4 +1,9 @@
 Name,ClassId,DisplayName,Description,MaxLevel,ClassType,GuildId
 class_progression_zero,class.progression_zero,Progression Zero,The universal starter state before real specialization,1,Starter,
 class_progression_rank_1,class.progression_rank_1,Progression Rank 1,The hard generalist path for players who delay guild specialization,10,Progression,
+class_archer,class.archer,Archer,Starter path for bow use field scouting and Archers Guild work,20,Martial,guild.archers
+class_priest,class.priest,Priest,Faith path for healing rites blessings and hard divine choices,20,Divine,guild.church
+class_knight,class.knight,Knight,Disciplined protector path sworn to law escort duty and heavy gear,20,Martial,guild.knights
+class_adventurer_rank_f,class.adventurer_rank_f,Adventurer Rank F,Entry guild path for quests danger and F rank field work,20,Starter,guild.adventurers
+class_thief,class.thief,Thief,Stealth path for locks contracts scouting and shadowed work,20,Martial,guild.thieves
 class_mage,class.mage,Mage,A rune and component caster who shapes mana through prepared structures,20,Caster,guild.mages

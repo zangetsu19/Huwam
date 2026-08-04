@@ -129,6 +129,14 @@ int32 UHuwamCombatComponent::RestoreMana(int32 Amount, UHuwamCharacterStatsCompo
     return AmountRestored;
 }
 
+void UHuwamCombatComponent::RestoreMetersForPrototypeSave(int32 SavedHealth, int32 SavedMana)
+{
+    CurrentHealth = FMath::Clamp(SavedHealth, 0, GetMaximumHealth());
+    CurrentMana = FMath::Clamp(SavedMana, 0, GetMaximumMana());
+    bDefeated = CurrentHealth <= 0;
+    OnCombatStateChanged.Broadcast();
+}
+
 bool UHuwamCombatComponent::ApplyResolvedDamage(const FHuwamCombatResult& InResult, FHuwamCombatResult& OutAppliedResult)
 {
     OutAppliedResult = InResult;

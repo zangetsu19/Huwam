@@ -1,6 +1,14 @@
 Name,JobId,DisplayName,Description,MinSalaryGold,MaxSalaryGold,AssociatedGuildId
-job_adventurer,job.adventurer,Adventurer,Takes quests and proves rank through danger,10,60,guild.adventurers
+job_builder,job.builder,Builder,Constructs repairs and expands structures roads and walls,12,80,
 job_hunter_gatherer,job.hunter_gatherer,Hunter/Gatherer,Collects field resources and harvests animals or monsters,8,45,guild.archers
-job_blacksmith,job.blacksmith,Blacksmith,Smelts metal and crafts weapons armor and tools,20,120,
+job_adventurer,job.adventurer,Adventurer,Takes quests and proves rank through danger,10,60,guild.adventurers
+job_officer,job.officer,Officer,Maintains law patrols and public order under authority,18,110,guild.knights
 job_merchant,job.merchant,Merchant,Buys sells transports and reads the market,15,150,guild.merchants
+job_blacksmith,job.blacksmith,Blacksmith,Smelts metal and crafts weapons armor and tools,20,120,
+job_tavern_owner,job.tavern_owner,Tavern Owner,Runs food rooms rumors staff and a public hearth,16,130,
 job_farmer,job.farmer,Farmer,Grows food herbs and field resources,6,40,
+job_fencer,job.fencer,Fencer,Trains precision dueling defense and refined weapon play,12,90,
+job_dungeon_explorer,job.dungeon_explorer,Dungeon Explorer,Maps delves and survives dangerous dungeon routes,14,100,guild.adventurers
+job_craftsman,job.craftsman,Craftsman,Turns common materials into reliable everyday goods,12,90,
+job_baker,job.baker,Baker,Bakes bread sweets and field rations for hungry towns,8,55,
+job_contractor,job.contractor,Contractor,Organizes crews permits materials and paid build orders,20,140,

@@ -1,0 +1,246 @@
+# Huwan World Bible Update
+
+Date: August 4, 2026
+Focus: First playable prototype spine
+
+## Update Summary
+
+Huwan's World Bible now has a stronger playable center. The setting is no longer only a large fantasy simulation concept; it has a first runnable path that connects character creation, Laucian's tutorial space, Eldoria's starter field, survival needs, early quests, money movement, and player interaction.
+
+The latest design direction should treat the first hour as a guided but living entry point. The player begins as Progression Zero, learns core systems in Laucian's white lab, then enters Eldoria with enough real systems active to make the city feel responsive instead of static.
+
+## First Playable Loop
+
+The current prototype loop is:
+
+1. Confirm a character.
+2. Enter Laucian's white lab.
+3. Learn movement, HUD reading, interaction, inventory, equipment, combat, map, quest tracking, and gathering.
+4. Gather tutorial lavender.
+5. Complete the first Progression Zero tutorial objective.
+6. Transition into the Eldoria starter field.
+7. See the Adventurers Guild board, an NPC supply requester, starter herbs, and Basic Slime targets.
+8. Accept and complete early field work.
+
+This makes the opening structure clearer:
+
+- Laucian's lab teaches the player how to exist in Huwan.
+- Eldoria teaches the player that Huwan is a living society with needs, money, guilds, danger, and people who remember help.
+- Progression Zero is not empty. It is the first identity state before the player chooses deeper class, job, guild, social, or secret paths.
+
+## Laucian's White Lab
+
+Laucian's white lab is now the official tutorial threshold between character creation and Eldoria.
+
+The lab should feel like a strange, clean, fourth-wall-aware pocket space where Laucian can teach without pretending the player is already part of the world. This supports his identity as a secret Mages Guild figure, moderator-like guide, and playful system-aware teacher.
+
+Current lesson order:
+
+- Movement
+- HUD basics
+- Interaction
+- Inventory
+- Equipment
+- Combat
+- Map
+- Quest tracking
+- Gathering
+
+World Bible implication:
+
+Laucian's lab should be treated as a controlled magical teaching space. It is not just a menu tutorial. It is an in-world ritual, pocket room, or training construct that prepares Noobs for the danger of Huwan without fully sheltering them from consequences after they leave.
+
+## Eldoria Starter Field
+
+The first Eldoria arrival is now centered on a starter field rather than a fully authored city map.
+
+The field contains:
+
+- Adventurers Guild board pad.
+- Visible NPC supply requester pad.
+- Starter herbs and gatherable resources.
+- Basic Slime combat targets.
+- A first readable connection between tutorial, questing, supply needs, and survival.
+
+World Bible implication:
+
+Eldoria's outskirts should be the first place where the player sees the world's philosophy: freedom until harm, accountability after harm. The player is trusted to move, gather, fight, accept contracts, help NPCs, and learn through action. The city does not freeze the player in safety. It gives them low-risk pressure and watches what kind of person they become.
+
+## Survival Vitals
+
+The survival layer now tracks:
+
+- Hunger
+- Thirst
+- Social energy
+- Food freshness
+- Survival effects
+- Living-server time
+
+First daily drain:
+
+- Hunger drains by 12 per in-game day.
+- Thirst drains by 20 per in-game day.
+- Social energy drains by 4 per in-game day.
+
+Food freshness now matters:
+
+- Fresh food restores the most hunger.
+- Stale food helps less.
+- Spoiled food is unsafe.
+- Stable preserved food gives reliable basic value.
+
+Empty needs create effects:
+
+- Starving
+- Dehydrated
+- Isolated
+- Unsafe food
+
+World Bible implication:
+
+Survival should create urgency without becoming punishment for simply existing. Hunger, thirst, and loneliness are story pressure. They should drive tavern visits, water use, cooking, friendships, inns, jobs, NPC care, and settlement quality. Sleeping does not skip the world clock; Huwan keeps living.
+
+## Town Services
+
+The first town services are now:
+
+- Tavern meal
+- Well water
+- Campfire chat
+- Inn room
+
+Paid services connect directly to the economy ledger. Free public services still matter socially, but paid services prove that money can move through owner wallets, guild funds, and settlement treasuries.
+
+World Bible implication:
+
+Taverns, wells, campfires, and inns are not flavor only. They are public survival infrastructure. If they fail, citizens suffer. If they thrive, the settlement becomes safer, warmer, and more socially alive.
+
+## Economy Ledger
+
+The economy now has an in-memory prototype ledger.
+
+Each paid service can record:
+
+- Transaction source
+- Owner NPC
+- Guild or faction owner
+- Settlement
+- Copper amount
+- Owner share
+- Guild or faction share
+- Settlement treasury share
+- In-game day
+- Human-readable note
+
+The first split rule for paid services:
+
+- Owner NPC keeps most revenue.
+- Guild or faction receives about one fifth.
+- Settlement treasury receives about one tenth, with small minimum support for low-cost services.
+
+World Bible implication:
+
+Huwan's economy should remember money. A tavern meal is not just a button that restores hunger. It pays a person, strengthens or weakens a guild, and contributes to settlement health. This supports future wages, taxes, bribes, repairs, shortages, service upkeep, and public works.
+
+## Service Upkeep and Restoration Quests
+
+Services can now become underfunded.
+
+When upkeep fails, a service can expose a pressure state that becomes a restoration quest. A player may later repair the situation by completing the matching quest and restoring service operation.
+
+World Bible implication:
+
+Economic failure should become adventure content. A broken well, closed inn, or failing tavern should not only be background dressing. It should create requests, rumors, prices, public frustration, and opportunities for players to help, exploit, fund, repair, or ignore the problem.
+
+## NPC Supply Quests
+
+The NPC supply system now supports previewing a need-aware quest before accepting it.
+
+The first field-supplies offer can explain:
+
+- Which NPC needs help.
+- What supply need caused the request.
+- Why the need matters.
+- How much is missing.
+- What objective and reward the player is considering.
+
+World Bible implication:
+
+NPC quests should feel caused by actual need. A poor resident asking for field supplies should be tied to inventory pressure, urgency, and shortage logic. The player should understand that the request exists because the world is low on something, not because a static quest marker woke up.
+
+## Guild Contract Board
+
+The Adventurers Guild board is now part of the first field loop. It can point the player toward relevant starter work and support the Basic Slime contract.
+
+World Bible implication:
+
+Guild boards should be treated as public interfaces into the living world. They are where private need becomes official work. A board can carry monster bounties, supply requests, restoration tasks, faction contracts, dungeon notices, civic jobs, and emergency warnings.
+
+## World Interaction
+
+The prototype now has a general world interaction layer for focused objects, interaction results, HUD prompts, and player hooks.
+
+World Bible implication:
+
+Interaction prompts should be diegetic and purposeful. The player should know what they are looking at, what action is available, and why it matters. Interactable objects should increasingly connect to inventory, quest, relationship, law, survival, and economy systems rather than acting as isolated props.
+
+## Third-Person Bootstrap
+
+The prototype now supports a cleaner third-person startup route with movement, camera, interaction, attack, menu access, save, and load controls.
+
+World Bible implication:
+
+The first playable identity should be embodied. Huwan should be experienced through a character who walks, looks, gathers, fights, opens menus, saves progress, and moves between tutorial and world spaces. The game should avoid feeling like only a spreadsheet simulation, even though the simulation is deep underneath.
+
+## Updated First-Hour Design Rule
+
+The first hour should prove five things:
+
+1. The player is a person in Huwan, not just a class sheet.
+2. Laucian can teach the player while preserving mystery and humor.
+3. Eldoria has people with needs before the player arrives.
+4. Survival, money, quests, and guilds are connected.
+5. Basic choices already hint at bigger consequences.
+
+## World Bible Sections To Merge This Into
+
+Recommended merge targets:
+
+- Project Progress
+- Tutorial and First Hour Flow
+- HUD, Minimap, and Navigation
+- Starter Data Set V0.1
+- First Eldoria Quest Automation V0.1
+- Starter Town
+- Eldoria Guild Council
+- NPC Simulation
+- Economy Loop
+- Survival and Adventure Layer
+- Contracts, Oaths, and Deals
+- Story Engine, Main Arcs, and World Events
+
+## Current Prototype Boundary
+
+This update confirms the first playable spine, but it is still a blockout.
+
+Still needed:
+
+- Authored Eldoria map art.
+- Better character art and animation.
+- Enhanced Input assets.
+- Richer combat feedback.
+- Real quest offer UI.
+- Data-driven board entries.
+- Multiplayer-safe state ownership.
+- Deeper survival consequences.
+- Economy prices, wages, taxes, and market pressure.
+- NPC memory and relationship consequences from the first field quests.
+
+## Updated Canonical Direction
+
+Huwan's near-term production target should be:
+
+Build the smallest complete version of a living fantasy world where a new player can become a Noob, learn from Laucian, enter Eldoria, survive the day, help or ignore a needy citizen, take a guild contract, fight Basic Slimes, earn money, and leave behind enough state that the world remembers something happened.
+
+That is the first true seed of Huwan.

@@ -241,6 +241,18 @@ void UHuwamEquipmentComponent::ResetToDefaultSlots()
     OnEquipmentChanged.Broadcast();
 }
 
+bool UHuwamEquipmentComponent::RestoreEquipmentSlotsForPrototypeSave(const TArray<FHuwamEquipmentSlotState>& SavedSlots)
+{
+    if (SavedSlots.IsEmpty())
+    {
+        return false;
+    }
+
+    EquipmentSlots = SavedSlots;
+    OnEquipmentChanged.Broadcast();
+    return true;
+}
+
 int32 UHuwamEquipmentComponent::FindSlotIndex(const FString& SlotId) const
 {
     for (int32 Index = 0; Index < EquipmentSlots.Num(); ++Index)

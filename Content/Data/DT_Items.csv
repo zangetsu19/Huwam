@@ -1,4 +1,4 @@
-Name,ItemId,DisplayName,ItemType,Description,StackLimit,Weight,BaseValueGold,AttackPower,DefensePower,ManaPower,UtilityPower,PrimaryEquipSlotId
+Name,ItemId,DisplayName,ItemType,Description,StackLimit,Weight,BaseValueCopper,AttackPower,DefensePower,ManaPower,UtilityPower,PrimaryEquipSlotId
 item_weapon_basic_sword,item.weapon.basic_sword,Basic Sword,Weapon,A starter iron sword with a basic wooden grip,1,4.0,25,5,0,0,0,slot.weapon.main_hand
 item_weapon_basic_knife,item.weapon.basic_knife,Basic Knife,Weapon,A simple knife useful for combat and work,1,1.0,10,2,0,0,1,slot.weapon.main_hand
 item_weapon_basic_bow,item.weapon.basic_bow,Basic Bow,Weapon,A simple wooden bow with flax string,1,2.0,18,4,0,0,0,slot.weapon.ranged
@@ -9,7 +9,10 @@ item_tool_hatchet,item.tool.hatchet,Hatchet,Tool,A small axe for basic wood gath
 item_tool_pickaxe,item.tool.pickaxe,Pickaxe,Tool,A basic pickaxe for stone and ore,1,4.0,16,2,0,0,3,slot.tool
 item_tool_fishing_rod,item.tool.fishing_rod,Fishing Rod,Tool,A starter rod for small fish,1,1.0,10,0,0,0,3,slot.tool
 item_container_small_pouch,item.container.small_pouch,Small Pouch,Pouch,A small hide pouch for materials or coins,1,0.2,4,0,0,0,1,slot.pouch.1
+item_container_food_pouch,item.container.food_pouch,Food Pouch,Pouch,A treated pouch that slows food and herb spoilage,1,0.3,12,0,0,0,2,slot.pouch.1
 item_container_basic_chest,item.container.basic_chest,Basic Chest,Container,A wooden chest for storage,1,8.0,20,0,1,0,4,
+item_container_cooled_storage_box,item.container.cooled_storage_box,Cooled Storage Box,Container,A chilled storage box that greatly slows spoilage,1,6.0,80,0,1,1,6,
+item_container_magical_storage_box,item.container.magical_storage_box,Magical Storage Box,Container,A rare storage box that holds freshness in stasis,1,2.0,500,0,1,4,10,slot.magical_storage
 item_bag_adventuring_backpack,item.bag.adventuring_backpack,Adventuring Backpack,Backpack,An upgraded backpack with 8 pouch slots and 500 item slots,1,3.0,120,0,1,0,8,slot.backpack
 item_gear_slime_test_piece,item.gear.slime_test_piece,Slime Gear Test Piece,Armor,A prototype slime-based gear piece for crafting tests,1,1.0,15,0,2,1,1,slot.chest
 material_wood_basic,material.wood.basic,Basic Wood,Material,Common wood from starter trees,99,0.5,1,0,0,0,0,

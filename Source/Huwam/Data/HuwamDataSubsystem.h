@@ -16,11 +16,17 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Huwam|Data")
     void SetDataRegistry(UHuwamDataRegistry* InDataRegistry);
 
+    UFUNCTION(BlueprintCallable, Category = "Huwam|Data")
+    bool EnsureDataRegistryLoaded();
+
     UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Data")
     UHuwamDataRegistry* GetDataRegistry() const;
 
     UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Data")
     bool HasDataRegistry() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Data")
+    FString GetDataBootstrapSummary() const;
 
     UFUNCTION(BlueprintCallable, Category = "Huwam|Data")
     bool GetContentPackRow(FName RowName, FHuwamContentPackRow& OutRow) const;

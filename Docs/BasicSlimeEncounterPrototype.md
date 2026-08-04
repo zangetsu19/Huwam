@@ -30,7 +30,7 @@ The Basic Slime needs to prove the first combat loop:
 | BaseLuck | Monster luck seed. |
 | PrimaryDropItemId | Simple V0.1 drop item. |
 | PrimaryDropQuantity | Simple V0.1 drop quantity. |
-| GoldReward | Gold payout after defeat. |
+| CurrencyRewardCopper | Copper-native currency payout after defeat. |
 | ExperienceReward | Experience payout after defeat. |
 
 ## Basic Slime V0.1
@@ -43,7 +43,7 @@ The Basic Slime needs to prove the first combat loop:
 | Mana | 0 |
 | Defense | 1 |
 | Luck | 2 |
-| Gold Reward | 3 |
+| Copper Reward | 3 |
 | Experience Reward | 5 |
 | Primary Drop | `material.slime_core.basic` x1 |
 
@@ -64,6 +64,7 @@ It can:
 - Attack a target combat component.
 - Receive attacks from another combat component.
 - Grant defeat rewards into an inventory.
+- Shrink its blockout sphere as health falls, then hide its mesh and collision after defeat so the field reads more clearly.
 
 ## First Playtest Flow
 
@@ -80,13 +81,13 @@ Expected early fight:
 
 - Player Basic Sword melee damage should chip the slime down in a few hits.
 - Slime attacks are weak but visible.
-- Reward grants one slime core, three gold, and five experience.
+- Reward grants one slime core, three copper, and five experience.
 
 ## Reward Bridge Step
 
 The first loot and reward bridge is now started:
 
-- Store gold and experience somewhere real.
+- Store currency and experience somewhere real.
 - Decide how monster rewards connect to quests.
 - Trigger the "Slimes in the Tall Grass" quest progress.
 - Feed harvested slime materials into inventory, crafting, and NPC requests.

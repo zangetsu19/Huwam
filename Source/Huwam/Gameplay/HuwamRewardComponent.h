@@ -46,6 +46,9 @@ struct FHuwamRewardGrantResult
     TArray<FHuwamIdQuantity> ItemsGranted;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Rewards")
+    int64 CurrencyCopperGranted = 0;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Rewards")
     int32 GoldGranted = 0;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Rewards")
@@ -85,6 +88,18 @@ public:
     int32 GetGoldBalance() const;
 
     UFUNCTION(BlueprintCallable, Category = "Huwam|Rewards")
+    int64 AddCopper(int64 Amount);
+
+    UFUNCTION(BlueprintCallable, Category = "Huwam|Rewards")
+    bool SpendCopper(int64 Amount);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Rewards")
+    int64 GetCurrencyBalanceCopper() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Rewards")
+    FHuwamCurrencyBreakdown GetCurrencyBreakdown() const;
+
+    UFUNCTION(BlueprintCallable, Category = "Huwam|Rewards")
     int32 AddExperience(int32 Amount);
 
     UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Rewards")
@@ -92,6 +107,9 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "Huwam|Rewards")
     bool BeginQuestObjective(const FString& QuestId, const FString& ObjectiveId, int32 TargetValue);
+
+    UFUNCTION(BlueprintCallable, Category = "Huwam|Rewards")
+    bool ResetQuestObjectiveProgress(const FString& QuestId, const FString& ObjectiveId, int32 TargetValue);
 
     UFUNCTION(BlueprintCallable, Category = "Huwam|Rewards")
     bool AddQuestProgress(const FString& QuestId, const FString& ObjectiveId, int32 Delta, int32 TargetValue, int32& OutCurrentValue, bool& bOutCompleted);
@@ -102,12 +120,15 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Huwam|Rewards")
     TArray<FHuwamQuestProgressRecord> GetQuestProgressRecords() const;
 
+    UFUNCTION(BlueprintCallable, Category = "Huwam|Rewards")
+    void RestoreRewardStateForPrototypeSave(int64 SavedCurrencyBalanceCopper, int32 SavedTotalExperience, const TArray<FHuwamQuestProgressRecord>& SavedQuestProgressRecords);
+
     UFUNCTION(BlueprintCallable, Category = "Huwam|Rewards", meta=(AdvancedDisplay="QuestId,ObjectiveId,QuestProgressDelta,QuestTargetValue"))
     bool ClaimMonsterDefeatRewards(AHuwamMonsterEncounterActor* Encounter, UHuwamInventoryComponent* RecipientInventory, const FString& QuestId, const FString& ObjectiveId, int32 QuestProgressDelta, int32 QuestTargetValue, FHuwamRewardGrantResult& OutResult);
 
 protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Huwam|Rewards", meta=(ClampMin="0"))
-    int32 GoldBalance = 0;
+    int64 CurrencyBalanceCopper = 0;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Huwam|Rewards", meta=(ClampMin="0"))
     int32 TotalExperience = 0;

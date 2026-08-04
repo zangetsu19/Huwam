@@ -215,6 +215,30 @@ struct FHuwamIdQuantity
 };
 
 USTRUCT(BlueprintType)
+struct FHuwamCurrencyBreakdown
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Currency")
+    int64 MarquisDiamondPrints = 0;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Currency")
+    int64 Platinum = 0;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Currency")
+    int64 Gold = 0;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Currency")
+    int64 Silver = 0;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Currency")
+    int64 Copper = 0;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Currency")
+    int64 TotalCopper = 0;
+};
+
+USTRUCT(BlueprintType)
 struct FHuwamContentPackRow : public FTableRowBase
 {
     GENERATED_BODY()
@@ -487,6 +511,9 @@ struct FHuwamItemRow : public FTableRowBase
     float Weight = 0.0f;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Item")
+    int64 BaseValueCopper = 0;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Item")
     int32 BaseValueGold = 0;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Item")
@@ -664,6 +691,9 @@ struct FHuwamMonsterRow : public FTableRowBase
     int32 PrimaryDropQuantity = 0;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Monster")
+    int64 CurrencyRewardCopper = 0;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Monster")
     int32 GoldReward = 0;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Monster")
@@ -739,6 +769,9 @@ struct FHuwamQuestRow : public FTableRowBase
     EHuwamQuestUrgency Urgency = EHuwamQuestUrgency::Normal;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Quest")
+    bool bRepeatable = false;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Quest")
     FString PrimaryObjectiveId;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Quest")
@@ -755,6 +788,9 @@ struct FHuwamQuestRow : public FTableRowBase
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Quest")
     TArray<FHuwamIdQuantity> RewardItems;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Quest")
+    int64 RewardCopper = 0;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Huwam|Quest")
     int32 RewardGold = 0;

@@ -14,10 +14,13 @@ The project currently has:
 - Existing AI engine scaffold: `Source/Huwam/AI`
 - First C++ data structs: `Source/Huwam/Data/HuwamDataTypes.h`
 - First data registry: `Source/Huwam/Data/HuwamDataRegistry.*`
-- First runtime data subsystem: `Source/Huwam/Data/HuwamDataSubsystem.*`
+- First runtime data subsystem with CSV auto-bootstrap: `Source/Huwam/Data/HuwamDataSubsystem.*`
+- First living time subsystem: `Source/Huwam/Gameplay/HuwamTimeSubsystem.*`
 - First data smoke test actor: `Source/Huwam/Data/HuwamDataSmokeTestActor.*`
 - First inventory component: `Source/Huwam/Gameplay/HuwamInventoryComponent.*`
 - First equipment component: `Source/Huwam/Gameplay/HuwamEquipmentComponent.*`
+- First map-awareness component: `Source/Huwam/Gameplay/HuwamMapAwarenessComponent.*`
+- First character creation runtime and menu data adapter: `Source/Huwam/Gameplay/HuwamCharacterCreation*`
 - Starter CSV data tables: `Content/Data`
 - Unreal target files: `Source/Huwam.Target.cs` and `Source/HuwamEditor.Target.cs`
 - World bible: `Docs/WorldBible.md`
@@ -33,7 +36,7 @@ The prototype should not try to build all of Huwan. It should prove the core loo
 
 1. Create a character.
 2. Enter Laucian's tutorial lab.
-3. Learn movement, HUD, inventory, map, and combat basics.
+3. Learn movement, third-person camera, HUD, inventory, map, and combat basics.
 4. Teleport to Eldoria.
 5. Accept a simple NPC or guild quest.
 6. Gather F-rank resources.
@@ -42,6 +45,20 @@ The prototype should not try to build all of Huwan. It should prove the core loo
 9. See an NPC inventory, reputation, or quest state update.
 
 If this loop works, the rest of Huwan has a real spine.
+
+## Presentation Target
+
+Huwan is targeting a high-graphics 3D third-person MMORPG experience.
+
+Prototype systems should stay compatible with:
+
+- Third-person character movement and camera readability.
+- High-fidelity 3D characters, environments, creatures, gear, and effects later.
+- HUD and map layers that support live world navigation instead of replacing the world view.
+- Living-server MMO systems where player-facing NPCs can react conversationally without treating every crowd record at the same cost.
+- Performance-minded world production as visual density, NPC count, simulation, and multiplayer scale increase.
+
+Early prototypes can use simple visuals while they prove systems, but they should not quietly drift toward a flat or menu-first game.
 
 ## Completed Design Foundations
 
@@ -74,6 +91,8 @@ These rules should guide every Unreal implementation step:
 - Build systems small, then let them grow.
 - Prefer data-driven design for anything that will have many entries.
 - Prototype with simple visuals before spending time on final art.
+- Keep tutorial, HUD, combat, and navigation systems legible from a third-person camera in 3D spaces.
+- Design NPC tiers so foreground conversations can be deep while background crowds stay performance-safe.
 - Make one working loop before building twenty unfinished systems.
 - Keep multiplayer in mind, but do not begin with full MMO-scale networking.
 - Treat AI simulation as layered: nearby important actors get detail, distant crowds get summaries.
@@ -217,7 +236,7 @@ Prototype rules:
 
 Deliverables:
 
-- Playable test character.
+- Playable third-person test character.
 - Stats update in real time.
 - Inventory can add, remove, stack, and inspect items.
 - Equipment slots can equip starter gear.
@@ -243,7 +262,7 @@ Character creation V0.1:
 Tutorial V0.1:
 
 - Player appears in Laucian's white laboratory.
-- Laucian or tutorial system teaches movement.
+- Laucian or tutorial system teaches movement and third-person camera basics.
 - HUD basics.
 - Inventory basics.
 - Equipment basics.
@@ -301,7 +320,7 @@ Important NPCs to include early:
 Deliverables:
 
 - Eldoria blockout.
-- First NPC conversations.
+- First foreground NPC conversations plus looped background chatter.
 - First quest acceptance and completion.
 - Basic reputation change.
 - NPC inventory update after quest completion.
@@ -358,6 +377,8 @@ First recipes:
 Deliverables:
 
 - Resource nodes respawn on correct time rules.
+- Settlement resource budgets support baseline NPC survival without requiring player harvesting.
+- Player gathering, defense, trade, sabotage, overharvesting, and crisis response change surplus, shortages, and settlement outcomes.
 - Basic slimes drop harvestable materials.
 - Items stack correctly.
 - Player can craft a starter item from gathered resources.
@@ -425,20 +446,29 @@ NPC simulation V0.1 features:
 - Memory summary.
 - Relationship value toward player.
 - Simple rumor output.
+- Foreground conversational NPC prototype.
+- Background NPC bark or loop-conversation prototype.
+
+Conversation depth target:
+
+- Foreground NPCs should eventually support ChatGPT-like conversations with players and other foreground NPCs, grounded in memory, personality, relationships, inventory, current needs, and world state so they can learn and grow.
+- Background NPCs should use authored or generated loop sayings, ambient conversations, schedules, and summary simulation until player attention, quest importance, social importance, or world events promote them forward.
 
 First dynamic quest pattern:
 
 1. NPC needs resource.
-2. NPC lacks resource.
-3. NPC creates request.
-4. Player completes request.
-5. NPC inventory updates.
-6. NPC does not request that resource again until low.
+2. NPC checks whether they can solve it internally.
+3. NPC lacks the means, or sees a player as faster, safer, more skilled, or more efficient.
+4. NPC creates a player-specific, board, guild, faction, contract, or rumor-routed request.
+5. Player, another player, or another NPC completes the request.
+6. NPC inventory updates.
+7. NPC does not request that resource again until low or circumstances change.
 
 Deliverables:
 
 - NPCs move through basic schedules.
 - NPC-generated resource quest works.
+- Different eligible players can receive different requests from the same changing NPC state.
 - Market or merchant stock changes from supply.
 - NPC remembers whether the player helped.
 
@@ -524,9 +554,10 @@ Create the first production data model and first prototype scope.
    - NPC
    - Quest
 4. Create first prototype content list. **Done**
-   - 3 races
-   - 3 classes
-   - 5 jobs
+   - Major parent race creation rows plus Halfling prototype support
+   - Approved Human sub-race visual baselines for character creation UI
+   - Starter class path rows plus hidden Mage support
+   - Starter job rows
    - 10 skills
    - 10 abilities
    - 20 items/materials
@@ -537,12 +568,13 @@ Create the first production data model and first prototype scope.
    - 5 starter quests
 5. Decide which data starts as DataTables and which starts as C++ structs. **Done**
 6. Add build-readiness checklist for Unreal. **Done**
-7. Add a runtime data registry that references the tables. **Started**
-8. Add a Game Instance subsystem to expose the registry to gameplay. **Started**
-9. Add a smoke test actor for imported data. **Started**
+7. Add a runtime data registry that references the tables. **Done for prototype**
+8. Add a Game Instance subsystem to expose the registry to gameplay. **Done for prototype**
+9. Add a smoke test actor for imported data. **Done for prototype**
 10. Add inventory stack behavior using item IDs and item stack limits. **Started**
 11. Add equipment slot behavior using item IDs and item equip slot data. **Started**
-12. Import CSV files as Unreal DataTable assets. **Next**
+12. Auto-load missing DataTables from project CSV files for prototype play. **Done**
+13. Import CSV files as Unreal DataTable assets. **Optional production path**
 
 ### Sprint 1 Output
 
@@ -550,7 +582,7 @@ By the end of Sprint 1, the game should have a clean design-to-code bridge. That
 
 ## First Prototype Content Target
 
-The first prototype should use a tiny version of Huwan.
+The first playable verification slice should use a tiny version of Huwan. The creation tables can already expose broader race, class, and job coverage while this first slice stays focused.
 
 ### Playable Races
 
@@ -563,6 +595,25 @@ Reason:
 - Human proves the all-rounder baseline.
 - Elf proves long-life and mana-well identity.
 - Dark-Elf proves outlier reputation and Laucian/Dawnspire relevance.
+
+### Human Character Creation Art Baseline
+
+The Human prototype baseline now has approved sub-race art direction:
+
+| Sub-Race | Baseline Read |
+| --- | --- |
+| Common Human | Level 1 adventurer with worn leather, soft cloth, and a used short sword. |
+| High-Human | Alabaster smug noble magic user in fine fabrics. |
+| Dawn Human | Yellow-warmed cheerful holy Human with bright garments and gentle aura. |
+| Dusk Human | Dark-skinned knight tank with greatsword, kite shield, and slight void aura. |
+| Frontier Human | Red sunburnt farmer/ranger with wild predator-watchful eyes. |
+| Urban Human | Slightly dirty merchant with softer build, ledgers, pouches, and trade tools. |
+| Warborn Human | Dark tanned scarred frontliner with fierce war-happy energy. |
+| Half-Elf | Human-Elf hybrid adventurer with very short ears, sword gear, charisma, and mixed-culture appeal. |
+| Blessed Human | Ebony skin, white hair and eyes, wings, deity tattoos, and holy aura. |
+| Cursed Human | Purple-tinted dark tan rogue with black eyes, curse tattoos, and purple aura. |
+
+Half-Blood Human remains a later matrix side project for most mixtures. Human-Elf is now approved as Half-Elf and should be exposed from both Human hybrid and Elf paths.
 
 ### Playable Classes
 
@@ -614,9 +665,13 @@ Reason:
 
 The next best prototype move is:
 
-**Create the character creation menu data adapter that feeds a non-technical UI.**
+**Play the first vertical slice in editor, smooth its feel, and replace code-spawned blockout pieces with the first authored white-lab and Eldoria map assets.**
 
-The data registry and subsystem code have been started. The Unreal editor step is still opening Unreal, importing the CSV files as DataTable assets using the row structs in `FHuwamDataTypes`, and assigning them to a `UHuwamDataRegistry` Data Asset. See `Docs/UnrealDataImport.md` for the exact import map.
+The next systems-side move is:
+
+**Add service-specific repair material requirements and restoration contribution types.**
+
+The data registry and subsystem can now auto-load the starter CSV files into runtime DataTables when no registry asset is configured. Imported DataTable assets and a `UHuwamDataRegistry` Data Asset remain the production-friendly path later, but the prototype no longer blocks on manual import. See `Docs/UnrealDataImport.md` for both paths.
 
 The first inventory component has also been started. Once the imported item table is connected, inventory stack limits will come from Huwan item data. See `Docs/InventoryPrototype.md`.
 
@@ -630,16 +685,126 @@ The first combat component has been started. It initializes health and mana from
 
 The first Basic Slime encounter actor has been started. It loads monster data, applies slime stats, uses the combat component, and grants a simple reward after defeat. See `Docs/BasicSlimeEncounterPrototype.md`.
 
-The first reward bridge has been started. It stores gold, experience, and quest progress, and can claim defeated monster rewards into inventory plus progression. See `Docs/RewardBridgePrototype.md`.
+The first reward bridge has been started. It stores copper-native Huwan currency, exposes denomination breakdowns, tracks experience and quest progress, and can claim defeated monster rewards into inventory plus progression. See `Docs/RewardBridgePrototype.md` and `Docs/CurrencyPrototype.md`.
 
-The first starter quest runtime has been started. It can activate "Slimes in the Tall Grass," mirror reward progress into quest state, expose active quest data for HUD/menu use, and turn the quest in for gold and experience. See `Docs/StarterQuestRuntimePrototype.md`.
+The first starter quest runtime has been started. It can activate "Slimes in the Tall Grass," mirror reward progress into quest state, expose active quest data for HUD/menu use, and turn the quest in for currency and experience. See `Docs/StarterQuestRuntimePrototype.md`.
 
 The first live content layer has been started too. Content pack manifests can describe DLC, cosmetics, pets, mounts, gameplay packs, and world expansions with version, entitlement, server enablement, and feature flag checks. See `Docs/LiveContentPrototype.md`.
 
-The first HUD/menu data adapter has been started. It builds a Blueprint-friendly snapshot for health, mana, gold, XP, inventory slots/stacks, active quest progress, and live content status. See `Docs/HudMenuDataPrototype.md`.
+The first HUD/menu data adapter has been started. It builds a Blueprint-friendly snapshot for health, mana, Huwan currency, XP, inventory slots/stacks, active quest progress, and live content status. See `Docs/HudMenuDataPrototype.md`.
 
 The first prototype player actor has been started. It bundles inventory, equipment, stats, combat, rewards, quests, live content, and HUD data, with helper calls for the Basic Slime quest loop. See `Docs/PrototypePlayerActor.md`.
 
 The first character creation runtime has been started. It validates race, sub-race, class, job, permanent skills, permanent abilities, Reincarnated limits, and starting stat bonuses, then plugs into the prototype player actor. See `Docs/CharacterCreationPrototype.md`.
 
-With creation rules in place, the code path is ready for a Blueprint-friendly menu adapter.
+The first character creation menu data adapter has been started. It can feed race, filtered sub-race, class, job, skill, ability, slot count, and validation data to a Blueprint UI. See `Docs/CharacterCreationMenuDataPrototype.md`.
+
+The first-pass creation data fill now covers the seven major parent races, representative sub-races, all stated starter class paths, and the first job roster.
+
+The first character creation screen scaffold has been started too. `UHuwamCharacterCreationScreenWidget` shows native prototype choices, validates confirmation, and initializes the prototype player from the confirmed request. See `Docs/CharacterCreationScreenPrototype.md`.
+
+The first Laucian tutorial-lab handoff has been started. Confirmed characters now begin the Progression Zero tutorial quest, can move to a placed white-lab entry marker, and expose Movement and HUD tutorial beats to HUD/menu data. See `Docs/TutorialLabHandoffPrototype.md`.
+
+The first physical lab interaction lesson has been started too. `AHuwamTutorialLabInteractableActor` gives the white lab a reusable training object that advances the player from Interaction Ready into Inventory Basics. See `Docs/TutorialLabInteractionPrototype.md`.
+
+The first inventory lab lesson has been started too. The starter pack now keeps a gathering knife and small pouch loose in inventory, the lab points at the gathering knife for inspection, and the prototype player can advance the lesson into Equipment Basics. See `Docs/TutorialLabInventoryPrototype.md`.
+
+The first equipment lab lesson has been started too. HUD/menu data now carries equipment slots, the lab points at the already-equipped main-hand Basic Sword, and the prototype player can advance the lesson into Combat Basics. See `Docs/TutorialLabEquipmentPrototype.md`.
+
+The first combat lab lesson has been started too. `AHuwamTutorialLabCombatTargetActor` accepts a real player melee hit, advances the tutorial into Map Basics, and avoids Eldoria monster rewards or quest credit. See `Docs/TutorialLabCombatPrototype.md`.
+
+The first map lab lesson has been started too. `UHuwamMapAwarenessComponent` seeds white-lab map state for minimap/full-map UI, HUD snapshots now expose that state, and opening the tutorial map advances Laucian into Quest Basics. See `Docs/TutorialLabMapPrototype.md`.
+
+The first quest lab lesson has been started too. The quest runtime now tracks one active quest, map awareness exposes the tracked objective marker seed, and Laucian advances into Gathering Basics once the Progression Zero quest is tracked. See `Docs/TutorialLabQuestPrototype.md`.
+
+The first gathering lab lesson has been started too. `AHuwamTutorialLabGatheringActor` grants tutorial lavender through inventory, checks for the gathering knife already introduced in the pack lesson, and completes the first Progression Zero tutorial objective. See `Docs/TutorialLabGatheringPrototype.md`.
+
+The first reusable world gathering node has been started too. `AHuwamGatheringResourceActor` loads a material row, grants a field item into inventory, applies current in-game-day respawn timing, and can advance active gather objectives through progress-source IDs such as `material.field_supply`. See `Docs/GatheringResourcePrototype.md`.
+
+The resource loop now also reserves a later player-built node path. Skilled players with matching tools, inputs, legal access, and time can establish new resource nodes such as watermelon fields; valid agricultural nodes mature into NPC-visible settlement production after about `2` in-game days. See `Docs/WorldBible.md` and `Docs/GatheringResourcePrototype.md`.
+
+The first Eldoria field gathering quest path has been started too. The quest component now has a `Gather Field Supplies` fallback, the prototype player can start and turn it in, and field gathering progress can reach its current currency and experience reward loop. See `Docs/GatherFieldSuppliesQuestPrototype.md`.
+
+The first NPC supply handoff has been started too. `UHuwamNpcSupplyComponent` accepts early field materials, updates recipient stock, and the `Gather Field Supplies` turn-in now delivers supplies before the reward resolves. See `Docs/NpcSupplyDeliveryPrototype.md`.
+
+The first NPC supply shortage gate has been started too. The prototype player can now start `Gather Field Supplies` through the matching low-stock NPC supply component instead of treating the living request as universal. See `Docs/NpcSupplyShortageGatePrototype.md`.
+
+The economy rules now also reserve essential NPC surplus buying. Profession-relevant buyers such as blacksmiths and builders can buy useful materials from players before those materials become urgent quest needs, building stock and easing shortage pressure. See `Docs/WorldBible.md`.
+
+The first NPC stock trade and use helpers have been started too. Accepted player surplus can now enter NPC stock through a prototype sale path that pays copper-native item base value, supply storage has a prototype capacity, and stock can be spent through an explicit use call that rechecks shortage pressure. See `Docs/NpcSupplyTradeUsePrototype.md`.
+
+The first NPC routine stock use has been started too. A configured NPC supply component can now repeat one accepted stock use on the current in-game-day timing so refilled stock can fall again through prototype world activity. See `Docs/NpcSupplyRoutineUsePrototype.md`.
+
+The first NPC supply need state has been started too. Supply stock can now expose a named need, a reason, current quantity, missing quantity, urgency, and a next action for Blueprint and later AI layers. See `Docs/NpcSupplyNeedStatePrototype.md`.
+
+The first need-aware NPC quest request has been started too. The shortage-gated field-supplies quest now stores the supply need that caused it, and HUD quest summaries can carry that request reason forward after acceptance. See `Docs/NpcSupplyQuestRequestPrototype.md`.
+
+The first NPC quest offer preview has been started too. Quest content can now be previewed before activation, and the field-supplies offer copies the live NPC supply need into that pre-acceptance data. See `Docs/NpcSupplyQuestOfferPrototype.md`.
+
+The first map-facing NPC supply quest interaction has been started too. `AHuwamNpcSupplyQuestOfferActor` owns the first requester's supply pocket, previews the field-supplies offer on interaction, and accepts the same need-aware offer into the active quest path. See `Docs/NpcSupplyQuestInteractionPrototype.md`.
+
+The first map-facing NPC supply turn-in has been started too. The same placed requester can accept the completed field-supplies delivery into its own stock pocket, then broadcast the quest and delivery result after reward resolution. See `Docs/NpcSupplyQuestTurnInPrototype.md`.
+
+The first NPC supply interaction state snapshot has been started too. The placed Eldoria requester can now report whether it is offering work, waiting for delivery, ready for turn-in, satisfied, or unavailable, with prompt text plus the relevant need and quest data. See `Docs/NpcSupplyQuestInteractionStatePrototype.md`.
+
+The first state-driven NPC supply interaction route has been started too. One actor call can now preview or accept the field-supplies offer, report waiting or satisfied state, or turn in delivery, while returning before-and-after interaction snapshots. See `Docs/NpcSupplyQuestStateDrivenInteractionPrototype.md`.
+
+The first NPC supply quest prompt surface has been started too. `UHuwamNpcSupplyQuestInteractionWidget` reads the routed Eldoria requester snapshot, previews and accepts the supply request, shows progress and reward details, and turns the completed delivery back through the same state route. See `Docs/NpcSupplyQuestWidgetPrototype.md`.
+
+The first shared world interaction route has been started too. `UHuwamWorldInteractionComponent` can focus a nearby Eldoria requester, white-lab interaction object, or field gathering node, exposes prompt state into HUD data, and lets the prototype player open the NPC supply request screen from focused world action. See `Docs/WorldInteractionPrototype.md`.
+
+The first visible world interaction prompt has been started too. `UHuwamWorldInteractionPromptWidget` shows the current supported focus prompt, the interaction component refreshes nearby focus during play, and the placed prototype player now binds a first `E`-key route until the real third-person pawn shell arrives. See `Docs/WorldInteractionPromptPrototype.md`.
+
+The first third-person prototype character has been started too. `AHuwamPrototypeThirdPersonCharacter` adds movement, a spring-arm follow camera, first pawn inputs, camera trace and aimed fallback focus, and an interaction-origin handoff into the existing prototype player state actor. See `Docs/ThirdPersonPrototypeCharacter.md`.
+
+The first third-person startup bootstrap has been started too. `AHuwamPrototypeGameMode` can spawn a character-creation-ready prototype player state actor, link it to the third-person character, and let the white-lab handoff move the playable avatar to Laucian's lab entry marker. See `Docs/ThirdPersonBootstrapPrototype.md`.
+
+The first visible Laucian tutorial prompt has been started too. `UHuwamTutorialLabPromptWidget` shows the current white-lab beat, the third-person pawn advances Movement after the player walks and looks around, and the HUD Basics beat can now advance from a first `Tab` acknowledgment into the existing pedestal interaction. See `Docs/TutorialLabPromptPrototype.md`.
+
+The first playable vertical slice pass has been started too. Native HUD and menu surfaces advance inventory, equipment, map, and quest lab beats; pawn attack and interaction input cover tutorial combat, Basic Slimes, and tutorial gathering; a code-spawned white lab exits into a code-spawned Eldoria starter field; and the first save slot persists prototype transform, inventory, equipment, rewards, quests, map awareness, and tutorial state. See `Docs/PlayableVerticalSlicePrototype.md`.
+
+The first playable-slice follow-up batch has been started too. Eldoria now places an Adventurers Guild contract board for the first slime contract and a visible NPC supply requester for the field-supplies path, the pawn control keys are named in `DefaultInput.ini`, the HUD reads Huwan denominations and turn-in state more clearly, defeated blockout monsters leave interaction focus, and the prototype save snapshot is versioned and preserves current health and mana. See `Docs/GuildContractBoardPrototype.md` and `Docs/PlayableVerticalSlicePrototype.md`.
+
+The next Eldoria slice batch has been started too. Guild boards now read configured contract quest IDs into board entries and prioritize turn-ins over active tracking and offers, their prompts can name the selected contract, the requester panel can sell one accepted surplus item into NPC stock, depleted gatherables hide until respawn, wounded blockout monsters shrink before defeat, and the starter field has first board/supply pads, road spurs, and boundary fences. See `Docs/GuildContractBoardPrototype.md`, `Docs/NpcSupplyQuestWidgetPrototype.md`, and `Docs/PlayableVerticalSlicePrototype.md`.
+
+The runtime data bridge has been hardened too. If no authored registry asset is configured, the data subsystem now creates a transient registry and loads all 15 starter CSV tables from `Content/Data`, while editor validation checks the core race, content pack, class, item, spell, monster, NPC, and quest rows before playing the slice. See `Docs/UnrealDataImport.md`.
+
+The first repeatable living request loop has been started too. Quest data now marks repeatable starter contracts, the quest runtime can restart a turned-in repeatable quest with fresh objective progress, NPC routine stock use can consume any accepted stocked supply when its preferred item is absent, and editor validation now proves that Eldoria's field-supplies request can return after NPC stock drains. See `Docs/NpcSupplyRoutineUsePrototype.md`, `Docs/NpcSupplyQuestRequestPrototype.md`, and `Docs/StarterQuestRuntimePrototype.md`.
+
+The first shared living-server clock has been started too. `UHuwamTimeSubsystem` owns the prototype conversion of 24 real hours into 7 in-game days, exposes a time snapshot for Blueprint and future AI engines, keeps time skipping disabled, and now feeds gathering respawn delays plus NPC routine supply delays. See `Docs/HuwamLivingTimeServicePrototype.md`.
+
+The first inventory spoilage hook has been started too. Inventory stacks can now carry freshness metadata, perishable stacks use the shared Huwam day count, herbs and food-like materials can become stale or spoiled, non-food materials stay stable, and saved inventory restores stack freshness instead of pretending everything was newly acquired. See `Docs/InventorySpoilagePrototype.md` and `Docs/InventoryPrototype.md`.
+
+The first storage preservation layer has been started too. Inventory stacks now remember storage quality and preservation multipliers, pouches and chests slow spoilage, cooled storage greatly extends freshness, and magical storage holds perishables in stasis for the prototype pass. New item data rows reserve food pouches, cooled storage boxes, and magical storage boxes. See `Docs/InventorySpoilagePrototype.md` and `Docs/InventoryPrototype.md`.
+
+The first storage routing layer has been started too. Inventory stacks now carry route IDs, storage routes expose used and remaining capacity, items can be added directly into a target route, existing stacks can be reassigned into pouch/chest/cooled/magical storage, and the prototype menu shows route capacity plus stack freshness. See `Docs/StorageRoutingPrototype.md`.
+
+The first survival vitals layer has been started too. A new survival component tracks hunger, thirst, and social energy against Huwam living time, the HUD shows those meters, food consumption reads inventory freshness, and prototype saves preserve survival state. See `Docs/SurvivalVitalsPrototype.md`.
+
+The first survival consequence layer has been started too. Empty hunger, thirst, and social meters now expose active effect IDs, unsafe food is tracked, and starvation/dehydration/unsafe-food can apply true damage through the combat component while validation restores the slice afterward. See `Docs/SurvivalVitalsPrototype.md`.
+
+The first survival service layer has been started too. Tavern meals, well water, campfire chats, and inn rooms can restore survival needs without advancing Huwam's living server clock, preserving the rule that nobody can speed up time by sleeping or resting. See `Docs/SurvivalVitalsPrototype.md`.
+
+The first placed survival service actors have been started too. Eldoria's prototype blockout now spawns a tavern meal point, town well, campfire chat point, and inn room service, and the world interaction router can focus and use them like other supported world targets. See `Docs/SurvivalServiceActorsPrototype.md`.
+
+The first survival service economy layer has been started too. Service actors now carry copper prices, owner NPC IDs, owning guild/faction IDs, and access policies; paid services check and spend the player's wallet, while locked services are blocked before charging. See `Docs/SurvivalServiceActorsPrototype.md` and `Docs/CurrencyPrototype.md`.
+
+The first economy ledger layer has been started too. Paid survival services now create revenue records with owner NPC, owning guild/faction, settlement, source tag, copper amount, and in-game day, giving later NPC wallets and settlement treasury systems a shared money trail. See `Docs/EconomyLedgerPrototype.md`.
+
+The first spendable service-account layer has been started too. Revenue now splits into owner NPC wallets, guild/faction funds, and settlement treasury balances, and the subsystem can spend from those accounts for future wages, repairs, upkeep, and public works. See `Docs/EconomyLedgerPrototype.md`.
+
+The first service upkeep layer has been started too. Survival service actors now have upkeep costs, can ask the economy ledger to pay from owner, guild/faction, then settlement accounts, and can become underfunded/closed when upkeep cannot be paid. See `Docs/EconomyLedgerPrototype.md` and `Docs/SurvivalServiceActorsPrototype.md`.
+
+The first service pressure bridge has been started too. Underfunded service actors now expose a supply-style need state with owner, need ID, urgency, needed quantity, and request-player-help action so repair and shortage quests can latch onto closed services. See `Docs/SurvivalServiceActorsPrototype.md`.
+
+The first HUD-facing economy debug layer has been started too. HUD/menu data now includes economy ledger totals, account balances, and focused survival-service pressure, and the native prototype HUD displays ledger count plus total recorded revenue beside the wallet line. See `Docs/HudMenuDataPrototype.md` and `Docs/EconomyLedgerPrototype.md`.
+
+The first service restoration quest generation layer has been started too. Quest runtime can now turn an underfunded service-pressure state into a repeatable restoration contract with owner, need context, urgency, objective source, reward, and tracked active state. See `Docs/EconomyLedgerPrototype.md`.
+
+The first service restoration turn-in layer has been started too. Survival service actors can now accept a completed matching restoration quest and use it to clear underfunding, re-enable the service, and complete the first failure-to-repair loop. See `Docs/SurvivalServiceActorsPrototype.md`.
+
+The first economy persistence layer has been started too. Prototype saves now carry economy ledger entries plus NPC, guild/faction, and settlement account balances, and load restores them through the economy ledger subsystem. See `Docs/EconomyLedgerPrototype.md`.
+
+The first survival-service persistence layer has been started too. Service actors now expose identity-based save snapshots for pricing, ownership, access, upkeep, enabled state, and underfunded state, and prototype save/load applies matching service state back onto placed actors. See `Docs/SurvivalServiceActorsPrototype.md`.
+
+The first stable service identity layer has been started too. Eldoria's placed tavern, well, campfire, and inn service actors now have authored instance IDs so save/load and later quest targeting can address specific service points. See `Docs/SurvivalServiceActorsPrototype.md`.
